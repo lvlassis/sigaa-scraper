@@ -66,6 +66,10 @@ except UnexpectedPageError:
 | `SessionExpiredError` | Os cookies expiraram ou são inválidos |
 | `UnexpectedPageError` | O SIGAA retornou uma página fora do esperado |
 
+## Aviso de uso
+
+> Esta biblioteca acessa apenas os dados do próprio usuário autenticado. Não a utilize para acessar dados de terceiros ou para realizar requisições em volume que possam sobrecarregar os servidores do SIGAA.
+
 ## Requisitos
 
 - Python 3.12+
