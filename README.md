@@ -1,4 +1,4 @@
-# sigaa-scraper
+# Sigaa Scraper
 
 Biblioteca Python para scraping do portal discente do SIGAA UFG. Extrai perfil acadêmico, matérias, atividades e atualizações de turma a partir de uma sessão autenticada.
 
