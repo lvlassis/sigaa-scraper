@@ -1,0 +1,26 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "sigaa-scraper"
+version = "0.1.0"
+description = "Biblioteca de scraping do SIGAA UFG"
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "Lucas Vinícius de L. Assis", email = "lvlassis.2@gmail.com" }]
+requires-python = ">=3.12"
+dependencies = [
+    "requests>=2.32.0",
+    "parsel>=1.9.0",
+    "xxhash>=3.0.0",
+]
+
+[project.urls]
+Repository = "https://github.com/lvlassis/sigaa-scraper"
+
+[dependency-groups]
+dev = ["pytest>=8.0.0"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
