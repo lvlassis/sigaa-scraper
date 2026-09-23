@@ -62,7 +62,6 @@ except UnexpectedPageError:
     ],
     "atividades": [
         {
-            "id": "a1b2c3...",       # hash estável da atividade
             "tipo": "alerta",        # "alerta" = prova na semana, "normal" = demais
             "due": "2026-08-31T23:59:00-03:00",
             "nome": "Prova 1",
@@ -71,7 +70,6 @@ except UnexpectedPageError:
     ],
     "atualizacoes_turma": [
         {
-            "id": "d4e5f6...",
             "materia": "Engenharia de Software 1",
             "criacao": "2026-08-24",
             "descricao": "Material da aula 5 disponível no portal.",
