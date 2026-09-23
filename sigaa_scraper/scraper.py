@@ -5,6 +5,8 @@ import requests
 import xxhash
 from parsel import Selector
 
+from .models import Atividade, AtualizacaoTurma, Discente, Turma
+
 _SIGAA_URL = "https://sigaa.sistemas.ufg.br/sigaa/portais/discente/discente.jsf"
 _USER_AGENT = (
     "Mozilla/5.0 (X11; Linux x86_64) "
@@ -19,18 +21,48 @@ _SMALL_PAGE_THRESHOLD = 500
 
 
 class SessionExpiredError(Exception):
-    pass
+    """Lançada quando os cookies da sessão estão expirados ou são inválidos."""
 
 
 class UnexpectedPageError(Exception):
-    pass
+    """Lançada quando o SIGAA retorna uma página fora do formato esperado."""
 
 
 class SigaaScraper:
+    """Cliente de scraping para o portal discente do SIGAA UFG.
+
+    Args:
+        cookies: Valor completo do header `Cookie` de uma sessão autenticada.
+            Deve conter `_ufg_br_sess` e `JSESSIONID`.
+
+    Example:
+        ```python
+        from sigaa_scraper import SigaaScraper, SessionExpiredError
+
+        scraper = SigaaScraper("_ufg_br_sess=...; JSESSIONID=...")
+        discente = scraper.get_discente()
+        print(discente.nome)
+        ```
+    """
+
     def __init__(self, cookies: str):
         self._cookies = cookies
 
-    def get_discente(self) -> dict:
+    def get_discente(self) -> Discente:
+        """Busca e retorna o perfil acadêmico do discente.
+
+        Realiza uma requisição autenticada ao SIGAA e extrai o perfil
+        acadêmico completo do discente.
+
+        Returns:
+            Instância de [`Discente`][sigaa_scraper.Discente] com todos os
+            dados do portal. Para obter um dicionário simples, use
+            `dataclasses.asdict(discente)`.
+
+        Raises:
+            SessionExpiredError: Se os cookies estiverem expirados ou inválidos.
+            UnexpectedPageError: Se o SIGAA retornar uma página fora do formato esperado.
+        """
         response = requests.get(
             _SIGAA_URL,
             headers={"Cookie": self._cookies, "User-Agent": _USER_AGENT},
@@ -47,33 +79,33 @@ class SigaaScraper:
             raise UnexpectedPageError("Página inesperada retornada pelo SIGAA")
 
     @staticmethod
-    def _parse_discente(sel: Selector) -> dict:
+    def _parse_discente(sel: Selector) -> Discente:
         raw_email = SigaaScraper._field(sel, "E-Mail:")
-        return {
-            "nome": sel.xpath('//span[@class="nome"]//b/text()').get("").strip(),
-            "matricula": SigaaScraper._field(sel, "Matrícula:"),
-            "curso": " ".join(SigaaScraper._field(sel, "Curso:").split()),
-            "nivel": SigaaScraper._field(sel, "Nível:"),
-            "status": SigaaScraper._field(sel, "Status:"),
-            "email": raw_email.split("@")[0] + "@discente.ufg.br" if "@" in raw_email else raw_email,
-            "entrada": SigaaScraper._field(sel, "Entrada:"),
-            "ip": SigaaScraper._to_float(SigaaScraper._indice(sel, "Índice de Prioridade")),
-            "ti": SigaaScraper._to_float(SigaaScraper._indice(sel, "Taxa de Integralização")),
-            "ta": SigaaScraper._to_float(SigaaScraper._indice(sel, "Taxa de Aprovação")),
-            "qr": SigaaScraper._to_float(SigaaScraper._indice(sel, "Quantidade de Reprovações por Falta")),
-            "mge": SigaaScraper._to_float(SigaaScraper._indice(sel, "Média Global do Estudante")),
-            "mre": SigaaScraper._to_float(SigaaScraper._indice(sel, "Média Relativa do Estudante")),
-            "pmf": SigaaScraper._to_float(SigaaScraper._indice(sel, "Porcentual Médio de Frequência")),
-            "ch_exigida": SigaaScraper._parse_int(
+        return Discente(
+            nome=sel.xpath('//span[@class="nome"]//b/text()').get("").strip(),
+            matricula=SigaaScraper._field(sel, "Matrícula:"),
+            curso=" ".join(SigaaScraper._field(sel, "Curso:").split()),
+            nivel=SigaaScraper._field(sel, "Nível:"),
+            status=SigaaScraper._field(sel, "Status:"),
+            email=raw_email.split("@")[0] + "@discente.ufg.br" if "@" in raw_email else raw_email,
+            entrada=SigaaScraper._field(sel, "Entrada:"),
+            ip=SigaaScraper._to_float(SigaaScraper._indice(sel, "Índice de Prioridade")),
+            ti=SigaaScraper._to_float(SigaaScraper._indice(sel, "Taxa de Integralização")),
+            ta=SigaaScraper._to_float(SigaaScraper._indice(sel, "Taxa de Aprovação")),
+            qr=SigaaScraper._to_float(SigaaScraper._indice(sel, "Quantidade de Reprovações por Falta")),
+            mge=SigaaScraper._to_float(SigaaScraper._indice(sel, "Média Global do Estudante")),
+            mre=SigaaScraper._to_float(SigaaScraper._indice(sel, "Média Relativa do Estudante")),
+            pmf=SigaaScraper._to_float(SigaaScraper._indice(sel, "Porcentual Médio de Frequência")),
+            ch_exigida=SigaaScraper._parse_int(
                 sel.xpath('//td[normalize-space()="CH. Exigida"]/following-sibling::td[1]/text()').get("").strip()
             ),
-            "ch_cursada": SigaaScraper._parse_int(
+            ch_cursada=SigaaScraper._parse_int(
                 sel.xpath('//td[normalize-space()="CH. Cursada"]/following-sibling::td[1]/text()').get("").strip()
             ),
-            "materias": SigaaScraper._materias(sel),
-            "atividades": SigaaScraper._atividades(sel),
-            "atualizacoes_turma": SigaaScraper._atualizacoes_turma(sel),
-        }
+            turmas=SigaaScraper._turmas(sel),
+            atividades=SigaaScraper._atividades(sel),
+            atualizacoes_turma=SigaaScraper._atualizacoes_turma(sel),
+        )
 
     @staticmethod
     def _field(sel: Selector, label: str) -> str:
@@ -116,7 +148,7 @@ class SigaaScraper:
         return date(int(m.group(3)), int(m.group(2)), int(m.group(1))).isoformat()
 
     @staticmethod
-    def _atividades(sel: Selector) -> list:
+    def _atividades(sel: Selector) -> list[Atividade]:
         rows = sel.xpath('//div[@id="avaliacao-portal"]//tbody/tr')
         result = []
         for row in rows:
@@ -128,11 +160,11 @@ class SigaaScraper:
             hasher = xxhash.xxh3_128()
             for part in (due or "", nome, materia):
                 hasher.update(part.encode())
-            result.append({"id": hasher.hexdigest(), "tipo": tipo, "due": due, "nome": nome, "materia": materia})
+            result.append(Atividade(id=hasher.hexdigest(), tipo=tipo, due=due, nome=nome, materia=materia))
         return result
 
     @staticmethod
-    def _atualizacoes_turma(sel: Selector) -> list:
+    def _atualizacoes_turma(sel: Selector) -> list[AtualizacaoTurma]:
         tables = sel.xpath('//div[@id="atualizacoes-turma"]//div[@class="rotator"]/table')
         result = []
         for table in tables:
@@ -142,11 +174,11 @@ class SigaaScraper:
             hasher = xxhash.xxh3_128()
             for part in (materia, criacao or "", descricao):
                 hasher.update(part.encode())
-            result.append({"id": hasher.hexdigest(), "materia": materia, "criacao": criacao, "descricao": descricao})
+            result.append(AtualizacaoTurma(id=hasher.hexdigest(), materia=materia, criacao=criacao, descricao=descricao))
         return result
 
     @staticmethod
-    def _materias(sel: Selector) -> list:
+    def _turmas(sel: Selector) -> list[Turma]:
         rows = sel.xpath(
             '//th[normalize-space()="Componente Curricular"]'
             '/ancestor::table[1]//tbody/tr'
@@ -157,5 +189,5 @@ class SigaaScraper:
             local = row.xpath('normalize-space(td[2])').get("").strip()
             horario = row.xpath('normalize-space(td[3]//center)').get("").strip()
             if nome:
-                result.append({"nome": nome, "local": local, "horario": horario})
+                result.append(Turma(nome=nome, local=local, horario=horario))
         return result

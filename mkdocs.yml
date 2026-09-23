@@ -1,0 +1,44 @@
+site_name: Sigaa Scraper
+site_description: Biblioteca Python para scraping do portal discente do SIGAA UFG
+site_url: https://lvlassis.github.io/sigaa-scraper
+repo_url: https://github.com/lvlassis/sigaa-scraper
+repo_name: lvlassis/sigaa-scraper
+
+theme:
+  name: material
+  language: pt
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Modo escuro
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Modo claro
+  features:
+    - navigation.sections
+    - navigation.top
+    - content.code.copy
+
+plugins:
+  - search:
+      lang: pt
+  - mkdocstrings:
+      handlers:
+        python:
+          paths: [.]
+          options:
+            docstring_style: google
+            show_source: true
+            show_root_heading: true
+            members_order: source
+
+nav:
+  - Início: index.md
+  - Quick Start: quickstart.md
+  - Referência da API: reference.md

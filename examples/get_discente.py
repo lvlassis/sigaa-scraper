@@ -8,6 +8,7 @@ Como obter os cookies:
   4. Copie o valor completo do header "Cookie" e cole abaixo.
 """
 
+import dataclasses
 import json
 import os
 
@@ -18,7 +19,7 @@ COOKIES = os.environ.get("SIGAA_COOKIES", "_ufg_br_sess=...; JSESSIONID=...")
 
 def main() -> None:
     try:
-        data = SigaaScraper(COOKIES).get_discente()
+        discente = SigaaScraper(COOKIES).get_discente()
     except SessionExpiredError:
         print("Sessão expirada — atualize os cookies.")
         return
@@ -26,35 +27,32 @@ def main() -> None:
         print("O SIGAA retornou uma página inesperada.")
         return
 
-    print(f"Aluno  : {data['nome']} ({data['matricula']})")
-    print(f"Curso  : {data['curso']} — {data['nivel']}")
-    print(f"Status : {data['status']}")
-    print(f"IP     : {data['ip']}  |  MGE: {data['mge']}  |  TI: {data['ti']}%")
+    print(f"Aluno  : {discente.nome} ({discente.matricula})")
+    print(f"Curso  : {discente.curso} — {discente.nivel}")
+    print(f"Status : {discente.status}")
+    print(f"IP     : {discente.ip}  |  MGE: {discente.mge}  |  TI: {discente.ti}%")
     print()
 
-    materias = data["materias"]
-    print(f"Matérias matriculadas ({len(materias)}):")
-    for m in materias:
-        print(f"  • {m['nome']:50s}  {m['local']:6s}  {m['horario']}")
+    print(f"Turmas matriculadas ({len(discente.turmas)}):")
+    for t in discente.turmas:
+        print(f"  • {t.nome:50s}  {t.local:6s}  {t.horario}")
 
     print()
-    atividades = data["atividades"]
-    alertas = [a for a in atividades if a["tipo"] == "alerta"]
-    print(f"Atividades ({len(atividades)})  —  alertas de prova na semana: {len(alertas)}")
-    for a in atividades:
-        tag = "[ALERTA]" if a["tipo"] == "alerta" else "        "
-        due = a["due"] or "sem prazo"
-        print(f"  {tag} {due}  {a['nome']} ({a['materia']})")
+    alertas = [a for a in discente.atividades if a.tipo == "alerta"]
+    print(f"Atividades ({len(discente.atividades)})  —  alertas de prova na semana: {len(alertas)}")
+    for a in discente.atividades:
+        tag = "[ALERTA]" if a.tipo == "alerta" else "        "
+        due = a.due or "sem prazo"
+        print(f"  {tag} {due}  {a.nome} ({a.materia})")
 
     print()
-    atualizacoes = data["atualizacoes_turma"]
-    print(f"Atualizações de turma ({len(atualizacoes)}):")
-    for u in atualizacoes:
-        print(f"  [{u['criacao']}] {u['materia']}: {u['descricao'][:80]}")
+    print(f"Atualizações de turma ({len(discente.atualizacoes_turma)}):")
+    for u in discente.atualizacoes_turma:
+        print(f"  [{u.criacao}] {u.materia}: {u.descricao[:80]}")
 
     print()
     print("Payload completo (JSON):")
-    print(json.dumps(data, ensure_ascii=False, indent=2))
+    print(json.dumps(dataclasses.asdict(discente), ensure_ascii=False, indent=2))
 
 
 if __name__ == "__main__":

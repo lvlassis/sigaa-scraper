@@ -20,7 +20,11 @@ dependencies = [
 Repository = "https://github.com/lvlassis/sigaa-scraper"
 
 [dependency-groups]
-dev = ["pytest>=8.0.0"]
+dev = [
+    "pytest>=8.0.0",
+    "mkdocs-material>=9.0.0",
+    "mkdocstrings[python]>=0.25.0",
+]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
