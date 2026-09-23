@@ -1,0 +1,3091 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Biblioteca Python para scraping do portal discente do SIGAA UFG">
+      
+      
+      
+        <link rel="canonical" href="https://lvlassis.github.io/sigaa-scraper/reference/">
+      
+      
+        <link rel="prev" href="../quickstart/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Referência da API - Sigaa Scraper</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#referencia-da-api" class="md-skip">
+          Ir para o conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href=".." title="Sigaa Scraper" class="md-header__button md-logo" aria-label="Sigaa Scraper" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Sigaa Scraper
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Referência da API
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Modo escuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Modo escuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando a pesquisa
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/lvlassis/sigaa-scraper" title="Ir ao repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    lvlassis/sigaa-scraper
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Sigaa Scraper" class="md-nav__button md-logo" aria-label="Sigaa Scraper" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Sigaa Scraper
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/lvlassis/sigaa-scraper" title="Ir ao repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    lvlassis/sigaa-scraper
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Início
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quick Start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Referência da API
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Referência da API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#sigaascraper" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SigaaScraper
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sigaa_scraper.SigaaScraper" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SigaaScraper
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SigaaScraper">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sigaa_scraper.SigaaScraper.get_discente" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        get_discente
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modelos-de-dados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modelos de dados
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sigaa_scraper.Discente" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Discente
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Discente">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sigaa_scraper.Discente.nome" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        nome
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sigaa_scraper.Discente.matricula" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        matricula
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sigaa_scraper.Discente.curso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        curso
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sigaa_scraper.Discente.nivel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        nivel
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sigaa_scraper.Discente.status" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        status
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sigaa_scraper.Discente.email" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        email
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sigaa_scraper.Discente.entrada" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        entrada
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sigaa_scraper.Discente.ip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ip
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sigaa_scraper.Discente.ti" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ti
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sigaa_scraper.Discente.ta" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ta
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sigaa_scraper.Discente.qr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        qr
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sigaa_scraper.Discente.mge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        mge
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sigaa_scraper.Discente.mre" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        mre
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sigaa_scraper.Discente.pmf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        pmf
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sigaa_scraper.Discente.ch_exigida" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ch_exigida
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sigaa_scraper.Discente.ch_cursada" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ch_cursada
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sigaa_scraper.Discente.turmas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        turmas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sigaa_scraper.Discente.atividades" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        atividades
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sigaa_scraper.Discente.atualizacoes_turma" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        atualizacoes_turma
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sigaa_scraper.Turma" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Turma
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Turma">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sigaa_scraper.Turma.nome" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        nome
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sigaa_scraper.Turma.local" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        local
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sigaa_scraper.Turma.horario" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        horario
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sigaa_scraper.Atividade" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Atividade
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Atividade">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sigaa_scraper.Atividade.tipo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        tipo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sigaa_scraper.Atividade.due" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        due
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sigaa_scraper.Atividade.nome" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        nome
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sigaa_scraper.Atividade.materia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        materia
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sigaa_scraper.AtualizacaoTurma" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AtualizacaoTurma
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="AtualizacaoTurma">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sigaa_scraper.AtualizacaoTurma.materia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        materia
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sigaa_scraper.AtualizacaoTurma.criacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        criacao
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sigaa_scraper.AtualizacaoTurma.descricao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        descricao
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#excecoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exceções
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sigaa_scraper.SessionExpiredError" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SessionExpiredError
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sigaa_scraper.UnexpectedPageError" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        UnexpectedPageError
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#sigaascraper" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SigaaScraper
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sigaa_scraper.SigaaScraper" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SigaaScraper
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SigaaScraper">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sigaa_scraper.SigaaScraper.get_discente" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        get_discente
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modelos-de-dados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modelos de dados
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sigaa_scraper.Discente" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Discente
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Discente">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sigaa_scraper.Discente.nome" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        nome
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sigaa_scraper.Discente.matricula" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        matricula
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sigaa_scraper.Discente.curso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        curso
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sigaa_scraper.Discente.nivel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        nivel
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sigaa_scraper.Discente.status" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        status
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sigaa_scraper.Discente.email" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        email
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sigaa_scraper.Discente.entrada" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        entrada
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sigaa_scraper.Discente.ip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ip
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sigaa_scraper.Discente.ti" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ti
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sigaa_scraper.Discente.ta" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ta
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sigaa_scraper.Discente.qr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        qr
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sigaa_scraper.Discente.mge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        mge
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sigaa_scraper.Discente.mre" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        mre
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sigaa_scraper.Discente.pmf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        pmf
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sigaa_scraper.Discente.ch_exigida" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ch_exigida
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sigaa_scraper.Discente.ch_cursada" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ch_cursada
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sigaa_scraper.Discente.turmas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        turmas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sigaa_scraper.Discente.atividades" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        atividades
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sigaa_scraper.Discente.atualizacoes_turma" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        atualizacoes_turma
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sigaa_scraper.Turma" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Turma
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Turma">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sigaa_scraper.Turma.nome" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        nome
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sigaa_scraper.Turma.local" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        local
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sigaa_scraper.Turma.horario" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        horario
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sigaa_scraper.Atividade" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Atividade
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Atividade">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sigaa_scraper.Atividade.tipo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        tipo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sigaa_scraper.Atividade.due" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        due
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sigaa_scraper.Atividade.nome" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        nome
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sigaa_scraper.Atividade.materia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        materia
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sigaa_scraper.AtualizacaoTurma" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AtualizacaoTurma
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="AtualizacaoTurma">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sigaa_scraper.AtualizacaoTurma.materia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        materia
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sigaa_scraper.AtualizacaoTurma.criacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        criacao
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sigaa_scraper.AtualizacaoTurma.descricao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        descricao
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#excecoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exceções
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sigaa_scraper.SessionExpiredError" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SessionExpiredError
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sigaa_scraper.UnexpectedPageError" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        UnexpectedPageError
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="referencia-da-api">Referência da API</h1>
+<h2 id="sigaascraper">SigaaScraper</h2>
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h2 id="sigaa_scraper.SigaaScraper" class="doc doc-heading">
+            <code>sigaa_scraper.SigaaScraper</code>
+
+
+</h2>
+
+
+    <div class="doc doc-contents first">
+
+
+
+        <p>Cliente de scraping para o portal discente do SIGAA UFG.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>cookies</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Valor completo do header <code>Cookie</code> de uma sessão autenticada.
+Deve conter <code>_ufg_br_sess</code> e <code>JSESSIONID</code>.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<details class="example" open>
+  <summary>Example</summary>
+  <pre><code class="language-python">from sigaa_scraper import SigaaScraper, SessionExpiredError
+
+scraper = SigaaScraper(&quot;_ufg_br_sess=...; JSESSIONID=...&quot;)
+discente = scraper.get_discente()
+print(discente.nome)
+</code></pre>
+</details>
+
+
+
+
+
+
+
+              <details class="mkdocstrings-source">
+                <summary>Source code in <code>sigaa_scraper/scraper.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span>
+<span class="normal">180</span>
+<span class="normal">181</span>
+<span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">SigaaScraper</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Cliente de scraping para o portal discente do SIGAA UFG.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        cookies: Valor completo do header `Cookie` de uma sessão autenticada.</span>
+<span class="sd">            Deve conter `_ufg_br_sess` e `JSESSIONID`.</span>
+
+<span class="sd">    Example:</span>
+<span class="sd">        ```python</span>
+<span class="sd">        from sigaa_scraper import SigaaScraper, SessionExpiredError</span>
+
+<span class="sd">        scraper = SigaaScraper("_ufg_br_sess=...; JSESSIONID=...")</span>
+<span class="sd">        discente = scraper.get_discente()</span>
+<span class="sd">        print(discente.nome)</span>
+<span class="sd">        ```</span>
+<span class="sd">    """</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cookies</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cookies</span> <span class="o">=</span> <span class="n">cookies</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_discente</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Discente</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Busca e retorna o perfil acadêmico do discente.</span>
+
+<span class="sd">        Realiza uma requisição autenticada ao SIGAA e extrai o perfil</span>
+<span class="sd">        acadêmico completo do discente.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Instância de [`Discente`][sigaa_scraper.Discente] com todos os</span>
+<span class="sd">            dados do portal. Para obter um dicionário simples, use</span>
+<span class="sd">            `dataclasses.asdict(discente)`.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            SessionExpiredError: Se os cookies estiverem expirados ou inválidos.</span>
+<span class="sd">            UnexpectedPageError: Se o SIGAA retornar uma página fora do formato esperado.</span>
+<span class="sd">        """</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+            <span class="n">_SIGAA_URL</span><span class="p">,</span>
+            <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">"Cookie"</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cookies</span><span class="p">,</span> <span class="s2">"User-Agent"</span><span class="p">:</span> <span class="n">_USER_AGENT</span><span class="p">},</span>
+        <span class="p">)</span>
+        <span class="n">body</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">text</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check_response</span><span class="p">(</span><span class="n">body</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parse_discente</span><span class="p">(</span><span class="n">Selector</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="n">body</span><span class="p">))</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_check_response</span><span class="p">(</span><span class="n">body</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">body</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">_SMALL_PAGE_THRESHOLD</span> <span class="ow">and</span> <span class="n">_SESSION_EXPIRED_MARKER</span> <span class="ow">in</span> <span class="n">body</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">SessionExpiredError</span><span class="p">(</span><span class="s2">"Sessão SIGAA expirada"</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">all</span><span class="p">(</span><span class="n">marker</span> <span class="ow">in</span> <span class="n">body</span> <span class="k">for</span> <span class="n">marker</span> <span class="ow">in</span> <span class="n">_PAGE_MARKERS</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">UnexpectedPageError</span><span class="p">(</span><span class="s2">"Página inesperada retornada pelo SIGAA"</span><span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_parse_discente</span><span class="p">(</span><span class="n">sel</span><span class="p">:</span> <span class="n">Selector</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Discente</span><span class="p">:</span>
+        <span class="n">raw_email</span> <span class="o">=</span> <span class="n">SigaaScraper</span><span class="o">.</span><span class="n">_field</span><span class="p">(</span><span class="n">sel</span><span class="p">,</span> <span class="s2">"E-Mail:"</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">Discente</span><span class="p">(</span>
+            <span class="n">nome</span><span class="o">=</span><span class="n">sel</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">'//span[@class="nome"]//b/text()'</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span>
+            <span class="n">matricula</span><span class="o">=</span><span class="n">SigaaScraper</span><span class="o">.</span><span class="n">_field</span><span class="p">(</span><span class="n">sel</span><span class="p">,</span> <span class="s2">"Matrícula:"</span><span class="p">),</span>
+            <span class="n">curso</span><span class="o">=</span><span class="s2">" "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">SigaaScraper</span><span class="o">.</span><span class="n">_field</span><span class="p">(</span><span class="n">sel</span><span class="p">,</span> <span class="s2">"Curso:"</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">()),</span>
+            <span class="n">nivel</span><span class="o">=</span><span class="n">SigaaScraper</span><span class="o">.</span><span class="n">_field</span><span class="p">(</span><span class="n">sel</span><span class="p">,</span> <span class="s2">"Nível:"</span><span class="p">),</span>
+            <span class="n">status</span><span class="o">=</span><span class="n">SigaaScraper</span><span class="o">.</span><span class="n">_field</span><span class="p">(</span><span class="n">sel</span><span class="p">,</span> <span class="s2">"Status:"</span><span class="p">),</span>
+            <span class="n">email</span><span class="o">=</span><span class="n">raw_email</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"@"</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s2">"@discente.ufg.br"</span> <span class="k">if</span> <span class="s2">"@"</span> <span class="ow">in</span> <span class="n">raw_email</span> <span class="k">else</span> <span class="n">raw_email</span><span class="p">,</span>
+            <span class="n">entrada</span><span class="o">=</span><span class="n">SigaaScraper</span><span class="o">.</span><span class="n">_field</span><span class="p">(</span><span class="n">sel</span><span class="p">,</span> <span class="s2">"Entrada:"</span><span class="p">),</span>
+            <span class="n">ip</span><span class="o">=</span><span class="n">SigaaScraper</span><span class="o">.</span><span class="n">_to_float</span><span class="p">(</span><span class="n">SigaaScraper</span><span class="o">.</span><span class="n">_indice</span><span class="p">(</span><span class="n">sel</span><span class="p">,</span> <span class="s2">"Índice de Prioridade"</span><span class="p">)),</span>
+            <span class="n">ti</span><span class="o">=</span><span class="n">SigaaScraper</span><span class="o">.</span><span class="n">_to_float</span><span class="p">(</span><span class="n">SigaaScraper</span><span class="o">.</span><span class="n">_indice</span><span class="p">(</span><span class="n">sel</span><span class="p">,</span> <span class="s2">"Taxa de Integralização"</span><span class="p">)),</span>
+            <span class="n">ta</span><span class="o">=</span><span class="n">SigaaScraper</span><span class="o">.</span><span class="n">_to_float</span><span class="p">(</span><span class="n">SigaaScraper</span><span class="o">.</span><span class="n">_indice</span><span class="p">(</span><span class="n">sel</span><span class="p">,</span> <span class="s2">"Taxa de Aprovação"</span><span class="p">)),</span>
+            <span class="n">qr</span><span class="o">=</span><span class="n">SigaaScraper</span><span class="o">.</span><span class="n">_to_float</span><span class="p">(</span><span class="n">SigaaScraper</span><span class="o">.</span><span class="n">_indice</span><span class="p">(</span><span class="n">sel</span><span class="p">,</span> <span class="s2">"Quantidade de Reprovações por Falta"</span><span class="p">)),</span>
+            <span class="n">mge</span><span class="o">=</span><span class="n">SigaaScraper</span><span class="o">.</span><span class="n">_to_float</span><span class="p">(</span><span class="n">SigaaScraper</span><span class="o">.</span><span class="n">_indice</span><span class="p">(</span><span class="n">sel</span><span class="p">,</span> <span class="s2">"Média Global do Estudante"</span><span class="p">)),</span>
+            <span class="n">mre</span><span class="o">=</span><span class="n">SigaaScraper</span><span class="o">.</span><span class="n">_to_float</span><span class="p">(</span><span class="n">SigaaScraper</span><span class="o">.</span><span class="n">_indice</span><span class="p">(</span><span class="n">sel</span><span class="p">,</span> <span class="s2">"Média Relativa do Estudante"</span><span class="p">)),</span>
+            <span class="n">pmf</span><span class="o">=</span><span class="n">SigaaScraper</span><span class="o">.</span><span class="n">_to_float</span><span class="p">(</span><span class="n">SigaaScraper</span><span class="o">.</span><span class="n">_indice</span><span class="p">(</span><span class="n">sel</span><span class="p">,</span> <span class="s2">"Porcentual Médio de Frequência"</span><span class="p">)),</span>
+            <span class="n">ch_exigida</span><span class="o">=</span><span class="n">SigaaScraper</span><span class="o">.</span><span class="n">_parse_int</span><span class="p">(</span>
+                <span class="n">sel</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">'//td[normalize-space()="CH. Exigida"]/following-sibling::td[1]/text()'</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+            <span class="p">),</span>
+            <span class="n">ch_cursada</span><span class="o">=</span><span class="n">SigaaScraper</span><span class="o">.</span><span class="n">_parse_int</span><span class="p">(</span>
+                <span class="n">sel</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">'//td[normalize-space()="CH. Cursada"]/following-sibling::td[1]/text()'</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+            <span class="p">),</span>
+            <span class="n">turmas</span><span class="o">=</span><span class="n">SigaaScraper</span><span class="o">.</span><span class="n">_turmas</span><span class="p">(</span><span class="n">sel</span><span class="p">),</span>
+            <span class="n">atividades</span><span class="o">=</span><span class="n">SigaaScraper</span><span class="o">.</span><span class="n">_atividades</span><span class="p">(</span><span class="n">sel</span><span class="p">),</span>
+            <span class="n">atualizacoes_turma</span><span class="o">=</span><span class="n">SigaaScraper</span><span class="o">.</span><span class="n">_atualizacoes_turma</span><span class="p">(</span><span class="n">sel</span><span class="p">),</span>
+        <span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_field</span><span class="p">(</span><span class="n">sel</span><span class="p">:</span> <span class="n">Selector</span><span class="p">,</span> <span class="n">label</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">sel</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s1">'//td[normalize-space()="</span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s1">"]/following-sibling::td[1]/text()'</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_indice</span><span class="p">(</span><span class="n">sel</span><span class="p">:</span> <span class="n">Selector</span><span class="p">,</span> <span class="n">title</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">sel</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s1">'//acronym[@title="</span><span class="si">{</span><span class="n">title</span><span class="si">}</span><span class="s1">"]/parent::td/following-sibling::td[1]//div/text()'</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_to_float</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">","</span><span class="p">,</span> <span class="s2">"."</span><span class="p">))</span>
+        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_parse_int</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="k">if</span> <span class="n">value</span><span class="o">.</span><span class="n">isdigit</span><span class="p">()</span> <span class="k">else</span> <span class="kc">None</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_parse_due</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">'(\d</span><span class="si">{2}</span><span class="s1">/\d</span><span class="si">{2}</span><span class="s1">/\d</span><span class="si">{4}</span><span class="s1">)\s+(\d{1,2}:\d{1,2})'</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">m</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="n">day</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="n">year</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"/"</span><span class="p">)</span>
+        <span class="n">h</span><span class="p">,</span> <span class="n">mi</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">":"</span><span class="p">)</span>
+        <span class="n">dt</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">year</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">month</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">day</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">h</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">mi</span><span class="p">),</span> <span class="n">tzinfo</span><span class="o">=</span><span class="n">_TZ_BRT</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">dt</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_parse_date</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">'(\d</span><span class="si">{2}</span><span class="s1">)/(\d</span><span class="si">{2}</span><span class="s1">)/(\d</span><span class="si">{4}</span><span class="s1">)'</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">m</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="k">return</span> <span class="n">date</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">3</span><span class="p">)),</span> <span class="nb">int</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">)),</span> <span class="nb">int</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)))</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_atividades</span><span class="p">(</span><span class="n">sel</span><span class="p">:</span> <span class="n">Selector</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Atividade</span><span class="p">]:</span>
+        <span class="n">rows</span> <span class="o">=</span> <span class="n">sel</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">'//div[@id="avaliacao-portal"]//tbody/tr'</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">:</span>
+            <span class="n">tipo</span> <span class="o">=</span> <span class="s2">"alerta"</span> <span class="k">if</span> <span class="n">row</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="sa">f</span><span class="s1">'td[1]//img[contains(@src, "</span><span class="si">{</span><span class="n">_ALERTA_IMG</span><span class="si">}</span><span class="s1">")]'</span><span class="p">)</span> <span class="k">else</span> <span class="s2">"normal"</span>
+            <span class="n">due_raw</span> <span class="o">=</span> <span class="s2">" "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">'td[2]//text()'</span><span class="p">)</span><span class="o">.</span><span class="n">getall</span><span class="p">())</span>
+            <span class="n">due</span> <span class="o">=</span> <span class="n">SigaaScraper</span><span class="o">.</span><span class="n">_parse_due</span><span class="p">(</span><span class="n">due_raw</span><span class="p">)</span>
+            <span class="n">nome</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">'td[3]/small//a/text()'</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+            <span class="n">materia</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">'(td[3]/small//text()[normalize-space()!=""])[1]'</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+            <span class="n">hasher</span> <span class="o">=</span> <span class="n">xxhash</span><span class="o">.</span><span class="n">xxh3_128</span><span class="p">()</span>
+            <span class="k">for</span> <span class="n">part</span> <span class="ow">in</span> <span class="p">(</span><span class="n">due</span> <span class="ow">or</span> <span class="s2">""</span><span class="p">,</span> <span class="n">nome</span><span class="p">,</span> <span class="n">materia</span><span class="p">):</span>
+                <span class="n">hasher</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">part</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Atividade</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">hasher</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">(),</span> <span class="n">tipo</span><span class="o">=</span><span class="n">tipo</span><span class="p">,</span> <span class="n">due</span><span class="o">=</span><span class="n">due</span><span class="p">,</span> <span class="n">nome</span><span class="o">=</span><span class="n">nome</span><span class="p">,</span> <span class="n">materia</span><span class="o">=</span><span class="n">materia</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">result</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_atualizacoes_turma</span><span class="p">(</span><span class="n">sel</span><span class="p">:</span> <span class="n">Selector</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">AtualizacaoTurma</span><span class="p">]:</span>
+        <span class="n">tables</span> <span class="o">=</span> <span class="n">sel</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">'//div[@id="atualizacoes-turma"]//div[@class="rotator"]/table'</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">table</span> <span class="ow">in</span> <span class="n">tables</span><span class="p">:</span>
+            <span class="n">materia</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">'normalize-space(.//tr[1]/td/a)'</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+            <span class="n">criacao</span> <span class="o">=</span> <span class="n">SigaaScraper</span><span class="o">.</span><span class="n">_parse_date</span><span class="p">(</span><span class="n">table</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">'.//tr[1]/td/text()'</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">""</span><span class="p">))</span>
+            <span class="n">descricao</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">'normalize-space(.//tr[2]/td)'</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+            <span class="n">hasher</span> <span class="o">=</span> <span class="n">xxhash</span><span class="o">.</span><span class="n">xxh3_128</span><span class="p">()</span>
+            <span class="k">for</span> <span class="n">part</span> <span class="ow">in</span> <span class="p">(</span><span class="n">materia</span><span class="p">,</span> <span class="n">criacao</span> <span class="ow">or</span> <span class="s2">""</span><span class="p">,</span> <span class="n">descricao</span><span class="p">):</span>
+                <span class="n">hasher</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">part</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">AtualizacaoTurma</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">hasher</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">(),</span> <span class="n">materia</span><span class="o">=</span><span class="n">materia</span><span class="p">,</span> <span class="n">criacao</span><span class="o">=</span><span class="n">criacao</span><span class="p">,</span> <span class="n">descricao</span><span class="o">=</span><span class="n">descricao</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">result</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_turmas</span><span class="p">(</span><span class="n">sel</span><span class="p">:</span> <span class="n">Selector</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Turma</span><span class="p">]:</span>
+        <span class="n">rows</span> <span class="o">=</span> <span class="n">sel</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span>
+            <span class="s1">'//th[normalize-space()="Componente Curricular"]'</span>
+            <span class="s1">'/ancestor::table[1]//tbody/tr'</span>
+        <span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">:</span>
+            <span class="n">nome</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">'normalize-space(td[1]/form//a)'</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+            <span class="n">local</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">'normalize-space(td[2])'</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+            <span class="n">horario</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">'normalize-space(td[3]//center)'</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">nome</span><span class="p">:</span>
+                <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Turma</span><span class="p">(</span><span class="n">nome</span><span class="o">=</span><span class="n">nome</span><span class="p">,</span> <span class="n">local</span><span class="o">=</span><span class="n">local</span><span class="p">,</span> <span class="n">horario</span><span class="o">=</span><span class="n">horario</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">result</span>
+</code></pre></div></td></tr></table></div>
+              </details>
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="sigaa_scraper.SigaaScraper.get_discente" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">get_discente</span><span class="p">()</span></code>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Busca e retorna o perfil acadêmico do discente.</p>
+<p>Realiza uma requisição autenticada ao SIGAA e extrai o perfil
+acadêmico completo do discente.</p>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="sigaa_scraper.Discente
+
+
+  
+      dataclass
+   (sigaa_scraper.models.Discente)" href="#sigaa_scraper.Discente">Discente</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Instância de <a class="autorefs autorefs-internal" title="sigaa_scraper.Discente
+
+
+  
+      dataclass
+  " href="#sigaa_scraper.Discente"><code>Discente</code></a> com todos os</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="sigaa_scraper.Discente
+
+
+  
+      dataclass
+   (sigaa_scraper.models.Discente)" href="#sigaa_scraper.Discente">Discente</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>dados do portal. Para obter um dicionário simples, use</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="sigaa_scraper.Discente
+
+
+  
+      dataclass
+   (sigaa_scraper.models.Discente)" href="#sigaa_scraper.Discente">Discente</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p><code>dataclasses.asdict(discente)</code>.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="sigaa_scraper.SessionExpiredError (sigaa_scraper.scraper.SessionExpiredError)" href="#sigaa_scraper.SessionExpiredError">SessionExpiredError</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Se os cookies estiverem expirados ou inválidos.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="sigaa_scraper.UnexpectedPageError (sigaa_scraper.scraper.UnexpectedPageError)" href="#sigaa_scraper.UnexpectedPageError">UnexpectedPageError</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Se o SIGAA retornar uma página fora do formato esperado.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>sigaa_scraper/scraper.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_discente</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Discente</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Busca e retorna o perfil acadêmico do discente.</span>
+
+<span class="sd">    Realiza uma requisição autenticada ao SIGAA e extrai o perfil</span>
+<span class="sd">    acadêmico completo do discente.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Instância de [`Discente`][sigaa_scraper.Discente] com todos os</span>
+<span class="sd">        dados do portal. Para obter um dicionário simples, use</span>
+<span class="sd">        `dataclasses.asdict(discente)`.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        SessionExpiredError: Se os cookies estiverem expirados ou inválidos.</span>
+<span class="sd">        UnexpectedPageError: Se o SIGAA retornar uma página fora do formato esperado.</span>
+<span class="sd">    """</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+        <span class="n">_SIGAA_URL</span><span class="p">,</span>
+        <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">"Cookie"</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cookies</span><span class="p">,</span> <span class="s2">"User-Agent"</span><span class="p">:</span> <span class="n">_USER_AGENT</span><span class="p">},</span>
+    <span class="p">)</span>
+    <span class="n">body</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">text</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_check_response</span><span class="p">(</span><span class="n">body</span><span class="p">)</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parse_discente</span><span class="p">(</span><span class="n">Selector</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="n">body</span><span class="p">))</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div><h2 id="modelos-de-dados">Modelos de dados</h2>
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h2 id="sigaa_scraper.Discente" class="doc doc-heading">
+            <code>sigaa_scraper.Discente</code>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-dataclass"><code>dataclass</code></small>
+  </span>
+
+</h2>
+
+
+    <div class="doc doc-contents first">
+
+
+
+        <p>Perfil acadêmico completo do discente.</p>
+
+
+
+
+
+
+
+
+              <details class="mkdocstrings-source">
+                <summary>Source code in <code>sigaa_scraper/models.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span>
+<span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span>
+<span class="normal">81</span>
+<span class="normal">82</span>
+<span class="normal">83</span>
+<span class="normal">84</span>
+<span class="normal">85</span>
+<span class="normal">86</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Discente</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Perfil acadêmico completo do discente."""</span>
+
+    <span class="n">nome</span><span class="p">:</span> <span class="nb">str</span>
+<span class="w">    </span><span class="sd">"""Nome completo."""</span>
+    <span class="n">matricula</span><span class="p">:</span> <span class="nb">str</span>
+<span class="w">    </span><span class="sd">"""Número de matrícula."""</span>
+    <span class="n">curso</span><span class="p">:</span> <span class="nb">str</span>
+<span class="w">    </span><span class="sd">"""Nome do curso."""</span>
+    <span class="n">nivel</span><span class="p">:</span> <span class="nb">str</span>
+<span class="w">    </span><span class="sd">"""Nível do curso (ex.: ``"Graduação"``)."""</span>
+    <span class="n">status</span><span class="p">:</span> <span class="nb">str</span>
+<span class="w">    </span><span class="sd">"""Situação acadêmica (ex.: ``"Ativo"``)."""</span>
+    <span class="n">email</span><span class="p">:</span> <span class="nb">str</span>
+<span class="w">    </span><span class="sd">"""E-mail institucional (``@discente.ufg.br``)."""</span>
+    <span class="n">entrada</span><span class="p">:</span> <span class="nb">str</span>
+<span class="w">    </span><span class="sd">"""Período de ingresso (ex.: ``"2023.1"``)."""</span>
+    <span class="n">ip</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">"""Índice de Prioridade."""</span>
+    <span class="n">ti</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">"""Taxa de Integralização em %."""</span>
+    <span class="n">ta</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">"""Taxa de Aprovação em %."""</span>
+    <span class="n">qr</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">"""Reprovações por Falta."""</span>
+    <span class="n">mge</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">"""Média Global do Estudante."""</span>
+    <span class="n">mre</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">"""Média Relativa do Estudante."""</span>
+    <span class="n">pmf</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">"""Porcentual Médio de Frequência em %."""</span>
+    <span class="n">ch_exigida</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">"""Carga horária exigida pelo curso."""</span>
+    <span class="n">ch_cursada</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">"""Carga horária já cursada."""</span>
+    <span class="n">turmas</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Turma</span><span class="p">]</span>
+<span class="w">    </span><span class="sd">"""Turmas matriculadas no semestre atual."""</span>
+    <span class="n">atividades</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Atividade</span><span class="p">]</span>
+<span class="w">    </span><span class="sd">"""Atividades avaliativas pendentes."""</span>
+    <span class="n">atualizacoes_turma</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">AtualizacaoTurma</span><span class="p">]</span>
+<span class="w">    </span><span class="sd">"""Atualizações recentes das turmas."""</span>
+</code></pre></div></td></tr></table></div>
+              </details>
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="sigaa_scraper.Discente.nome" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">nome</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Nome completo.</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="sigaa_scraper.Discente.matricula" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">matricula</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Número de matrícula.</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="sigaa_scraper.Discente.curso" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">curso</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Nome do curso.</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="sigaa_scraper.Discente.nivel" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">nivel</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Nível do curso (ex.: <code>"Graduação"</code>).</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="sigaa_scraper.Discente.status" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">status</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Situação acadêmica (ex.: <code>"Ativo"</code>).</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="sigaa_scraper.Discente.email" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">email</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>E-mail institucional (<code>@discente.ufg.br</code>).</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="sigaa_scraper.Discente.entrada" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">entrada</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Período de ingresso (ex.: <code>"2023.1"</code>).</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="sigaa_scraper.Discente.ip" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">ip</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Índice de Prioridade.</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="sigaa_scraper.Discente.ti" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">ti</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Taxa de Integralização em %.</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="sigaa_scraper.Discente.ta" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">ta</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Taxa de Aprovação em %.</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="sigaa_scraper.Discente.qr" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">qr</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Reprovações por Falta.</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="sigaa_scraper.Discente.mge" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">mge</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Média Global do Estudante.</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="sigaa_scraper.Discente.mre" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">mre</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Média Relativa do Estudante.</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="sigaa_scraper.Discente.pmf" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">pmf</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Porcentual Médio de Frequência em %.</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="sigaa_scraper.Discente.ch_exigida" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">ch_exigida</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Carga horária exigida pelo curso.</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="sigaa_scraper.Discente.ch_cursada" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">ch_cursada</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Carga horária já cursada.</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="sigaa_scraper.Discente.turmas" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">turmas</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Turmas matriculadas no semestre atual.</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="sigaa_scraper.Discente.atividades" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">atividades</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Atividades avaliativas pendentes.</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="sigaa_scraper.Discente.atualizacoes_turma" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">atualizacoes_turma</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Atualizações recentes das turmas.</p>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h2 id="sigaa_scraper.Turma" class="doc doc-heading">
+            <code>sigaa_scraper.Turma</code>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-dataclass"><code>dataclass</code></small>
+  </span>
+
+</h2>
+
+
+    <div class="doc doc-contents first">
+
+
+
+        <p>Turma matriculada no semestre atual.</p>
+
+
+
+
+
+
+
+
+              <details class="mkdocstrings-source">
+                <summary>Source code in <code>sigaa_scraper/models.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Turma</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Turma matriculada no semestre atual."""</span>
+
+    <span class="n">nome</span><span class="p">:</span> <span class="nb">str</span>
+<span class="w">    </span><span class="sd">"""Nome do componente curricular."""</span>
+    <span class="n">local</span><span class="p">:</span> <span class="nb">str</span>
+<span class="w">    </span><span class="sd">"""Sala ou local das aulas."""</span>
+    <span class="n">horario</span><span class="p">:</span> <span class="nb">str</span>
+<span class="w">    </span><span class="sd">"""Código de horário (ex.: ``"2M12345"``)."""</span>
+</code></pre></div></td></tr></table></div>
+              </details>
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="sigaa_scraper.Turma.nome" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">nome</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Nome do componente curricular.</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="sigaa_scraper.Turma.local" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">local</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Sala ou local das aulas.</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="sigaa_scraper.Turma.horario" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">horario</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Código de horário (ex.: <code>"2M12345"</code>).</p>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h2 id="sigaa_scraper.Atividade" class="doc doc-heading">
+            <code>sigaa_scraper.Atividade</code>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-dataclass"><code>dataclass</code></small>
+  </span>
+
+</h2>
+
+
+    <div class="doc doc-contents first">
+
+
+
+        <p>Atividade avaliativa pendente.</p>
+
+
+
+
+
+
+
+
+              <details class="mkdocstrings-source">
+                <summary>Source code in <code>sigaa_scraper/models.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Atividade</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Atividade avaliativa pendente."""</span>
+
+    <span class="n">tipo</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s2">"alerta"</span><span class="p">,</span> <span class="s2">"normal"</span><span class="p">]</span>
+<span class="w">    </span><span class="sd">"""``"alerta"`` se há prova na semana corrente, ``"normal"`` caso contrário."""</span>
+    <span class="n">due</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">"""Prazo em ISO 8601 com fuso BRT (ex.: ``"2026-08-31T23:59:00-03:00"``) ou ``None``."""</span>
+    <span class="n">nome</span><span class="p">:</span> <span class="nb">str</span>
+<span class="w">    </span><span class="sd">"""Nome da atividade."""</span>
+    <span class="n">materia</span><span class="p">:</span> <span class="nb">str</span>
+<span class="w">    </span><span class="sd">"""Nome da matéria associada."""</span>
+</code></pre></div></td></tr></table></div>
+              </details>
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="sigaa_scraper.Atividade.tipo" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">tipo</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p><code>"alerta"</code> se há prova na semana corrente, <code>"normal"</code> caso contrário.</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="sigaa_scraper.Atividade.due" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">due</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Prazo em ISO 8601 com fuso BRT (ex.: <code>"2026-08-31T23:59:00-03:00"</code>) ou <code>None</code>.</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="sigaa_scraper.Atividade.nome" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">nome</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Nome da atividade.</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="sigaa_scraper.Atividade.materia" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">materia</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Nome da matéria associada.</p>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h2 id="sigaa_scraper.AtualizacaoTurma" class="doc doc-heading">
+            <code>sigaa_scraper.AtualizacaoTurma</code>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-dataclass"><code>dataclass</code></small>
+  </span>
+
+</h2>
+
+
+    <div class="doc doc-contents first">
+
+
+
+        <p>Atualização publicada em uma turma.</p>
+
+
+
+
+
+
+
+
+              <details class="mkdocstrings-source">
+                <summary>Source code in <code>sigaa_scraper/models.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">AtualizacaoTurma</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Atualização publicada em uma turma."""</span>
+
+    <span class="n">materia</span><span class="p">:</span> <span class="nb">str</span>
+<span class="w">    </span><span class="sd">"""Nome da matéria."""</span>
+    <span class="n">criacao</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">"""Data de criação em ISO 8601 (ex.: ``"2026-08-24"``) ou ``None``."""</span>
+    <span class="n">descricao</span><span class="p">:</span> <span class="nb">str</span>
+<span class="w">    </span><span class="sd">"""Texto da atualização."""</span>
+</code></pre></div></td></tr></table></div>
+              </details>
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="sigaa_scraper.AtualizacaoTurma.materia" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">materia</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Nome da matéria.</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="sigaa_scraper.AtualizacaoTurma.criacao" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">criacao</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Data de criação em ISO 8601 (ex.: <code>"2026-08-24"</code>) ou <code>None</code>.</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="sigaa_scraper.AtualizacaoTurma.descricao" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">descricao</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Texto da atualização.</p>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+</div><h2 id="excecoes">Exceções</h2>
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h2 id="sigaa_scraper.SessionExpiredError" class="doc doc-heading">
+            <code>sigaa_scraper.SessionExpiredError</code>
+
+
+</h2>
+
+
+    <div class="doc doc-contents first">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="Exception">Exception</span></code></p>
+
+
+
+        <p>Lançada quando os cookies da sessão estão expirados ou são inválidos.</p>
+
+
+
+
+
+
+
+
+              <details class="mkdocstrings-source">
+                <summary>Source code in <code>sigaa_scraper/scraper.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">23</span>
+<span class="normal">24</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">SessionExpiredError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Lançada quando os cookies da sessão estão expirados ou são inválidos."""</span>
+</code></pre></div></td></tr></table></div>
+              </details>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h2 id="sigaa_scraper.UnexpectedPageError" class="doc doc-heading">
+            <code>sigaa_scraper.UnexpectedPageError</code>
+
+
+</h2>
+
+
+    <div class="doc doc-contents first">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="Exception">Exception</span></code></p>
+
+
+
+        <p>Lançada quando o SIGAA retorna uma página fora do formato esperado.</p>
+
+
+
+
+
+
+
+
+              <details class="mkdocstrings-source">
+                <summary>Source code in <code>sigaa_scraper/scraper.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">27</span>
+<span class="normal">28</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">UnexpectedPageError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Lançada quando o SIGAA retorna uma página fora do formato esperado."""</span>
+</code></pre></div></td></tr></table></div>
+              </details>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Voltar ao topo
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.top", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "Mais 1 nesta p\u00e1gina", "search.result.more.other": "Mais # nesta p\u00e1gina", "search.result.none": "Nenhum resultado encontrado", "search.result.one": "1 resultado encontrado", "search.result.other": "# resultados encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
