@@ -2,7 +2,6 @@ import re
 from datetime import date, datetime, timedelta, timezone
 
 import requests
-import xxhash
 from parsel import Selector
 
 from .models import Atividade, AtualizacaoTurma, Discente, Turma
@@ -157,10 +156,7 @@ class SigaaScraper:
             due = SigaaScraper._parse_due(due_raw)
             nome = row.xpath('td[3]/small//a/text()').get("").strip()
             materia = row.xpath('(td[3]/small//text()[normalize-space()!=""])[1]').get("").strip()
-            hasher = xxhash.xxh3_128()
-            for part in (due or "", nome, materia):
-                hasher.update(part.encode())
-            result.append(Atividade(id=hasher.hexdigest(), tipo=tipo, due=due, nome=nome, materia=materia))
+            result.append(Atividade(tipo=tipo, due=due, nome=nome, materia=materia))
         return result
 
     @staticmethod
@@ -171,10 +167,7 @@ class SigaaScraper:
             materia = table.xpath('normalize-space(.//tr[1]/td/a)').get("").strip()
             criacao = SigaaScraper._parse_date(table.xpath('.//tr[1]/td/text()').get(""))
             descricao = table.xpath('normalize-space(.//tr[2]/td)').get("").strip()
-            hasher = xxhash.xxh3_128()
-            for part in (materia, criacao or "", descricao):
-                hasher.update(part.encode())
-            result.append(AtualizacaoTurma(id=hasher.hexdigest(), materia=materia, criacao=criacao, descricao=descricao))
+            result.append(AtualizacaoTurma(materia=materia, criacao=criacao, descricao=descricao))
         return result
 
     @staticmethod
