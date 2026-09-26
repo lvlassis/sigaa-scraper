@@ -1,6 +1,7 @@
 import pytest
 from parsel import Selector
 
+from sigaa_scraper.models import Discente
 from sigaa_scraper.scraper import (
     SigaaScraper,
     SessionExpiredError,
@@ -108,9 +109,9 @@ class TestIndice:
         assert SigaaScraper._indice(_sel(self.HTML), "Índice Inexistente") == ""
 
 
-# ── _materias ────────────────────────────────────────────────────────────────
+# ── _turmas ──────────────────────────────────────────────────────────────────
 
-class TestMaterias:
+class TestTurmas:
     HTML = """
     <table>
       <thead><tr><th>Componente Curricular</th><th>Local</th><th>Horário</th></tr></thead>
@@ -129,19 +130,19 @@ class TestMaterias:
     </table>
     """
 
-    def test_quantidade_de_materias(self):
-        assert len(SigaaScraper._materias(_sel(self.HTML))) == 2
+    def test_quantidade_de_turmas(self):
+        assert len(SigaaScraper._turmas(_sel(self.HTML))) == 2
 
-    def test_nomes_das_materias(self):
-        nomes = [m["nome"] for m in SigaaScraper._materias(_sel(self.HTML))]
+    def test_nomes_das_turmas(self):
+        nomes = [t.nome for t in SigaaScraper._turmas(_sel(self.HTML))]
         assert "Algoritmos e Programação" in nomes
         assert "Cálculo I" in nomes
 
-    def test_campos_de_cada_materia(self):
-        result = SigaaScraper._materias(_sel(self.HTML))
-        materia = next(m for m in result if m["nome"] == "Algoritmos e Programação")
-        assert materia["local"] == "AT4"
-        assert materia["horario"] == "2M12345"
+    def test_campos_de_cada_turma(self):
+        result = SigaaScraper._turmas(_sel(self.HTML))
+        turma = next(t for t in result if t.nome == "Algoritmos e Programação")
+        assert turma.local == "AT4"
+        assert turma.horario == "2M12345"
 
     def test_tabela_sem_linhas_retorna_vazio(self):
         html = """
@@ -150,7 +151,7 @@ class TestMaterias:
           <tbody></tbody>
         </table>
         """
-        assert SigaaScraper._materias(_sel(html)) == []
+        assert SigaaScraper._turmas(_sel(html)) == []
 
     def test_linha_sem_nome_e_ignorada(self):
         html = """
@@ -161,7 +162,7 @@ class TestMaterias:
           </tbody>
         </table>
         """
-        assert SigaaScraper._materias(_sel(html)) == []
+        assert SigaaScraper._turmas(_sel(html)) == []
 
 
 # ── _parse_due ───────────────────────────────────────────────────────────────
@@ -211,44 +212,25 @@ class TestAtividades:
     """
 
     def test_tipo_alerta_com_img(self):
-        assert SigaaScraper._atividades(_sel(self._HTML_ALERTA))[0]["tipo"] == "alerta"
+        assert SigaaScraper._atividades(_sel(self._HTML_ALERTA))[0].tipo == "alerta"
 
     def test_tipo_normal_sem_img(self):
-        assert SigaaScraper._atividades(_sel(self._HTML_NORMAL))[0]["tipo"] == "normal"
+        assert SigaaScraper._atividades(_sel(self._HTML_NORMAL))[0].tipo == "normal"
 
     def test_due_com_sufixo_dias(self):
-        assert SigaaScraper._atividades(_sel(self._HTML_ALERTA))[0]["due"] == "2026-08-31T23:59:00-03:00"
+        assert SigaaScraper._atividades(_sel(self._HTML_ALERTA))[0].due == "2026-08-31T23:59:00-03:00"
 
     def test_due_com_font_gray(self):
-        assert SigaaScraper._atividades(_sel(self._HTML_NORMAL))[0]["due"] == "2026-08-24T21:35:00-03:00"
+        assert SigaaScraper._atividades(_sel(self._HTML_NORMAL))[0].due == "2026-08-24T21:35:00-03:00"
 
     def test_nome_extraido_do_link(self):
-        assert SigaaScraper._atividades(_sel(self._HTML_ALERTA))[0]["nome"] == "Nome da Atividade"
+        assert SigaaScraper._atividades(_sel(self._HTML_ALERTA))[0].nome == "Nome da Atividade"
 
     def test_materia_sem_font(self):
-        assert SigaaScraper._atividades(_sel(self._HTML_ALERTA))[0]["materia"] == "MATÉRIA A"
+        assert SigaaScraper._atividades(_sel(self._HTML_ALERTA))[0].materia == "MATÉRIA A"
 
     def test_materia_dentro_de_font(self):
-        assert SigaaScraper._atividades(_sel(self._HTML_NORMAL))[0]["materia"] == "MATÉRIA B"
-
-    def test_id_e_string_hexadecimal(self):
-        int(SigaaScraper._atividades(_sel(self._HTML_ALERTA))[0]["id"], 16)
-
-    def test_id_deterministico(self):
-        assert (
-            SigaaScraper._atividades(_sel(self._HTML_ALERTA))[0]["id"]
-            == SigaaScraper._atividades(_sel(self._HTML_ALERTA))[0]["id"]
-        )
-
-    def test_ids_distintos_para_atividades_distintas(self):
-        html = f"""
-        <div id="avaliacao-portal"><table><tbody>
-          {self._HTML_ALERTA.split('<tbody>')[1].split('</tbody>')[0]}
-          {self._HTML_NORMAL.split('<tbody>')[1].split('</tbody>')[0]}
-        </tbody></table></div>
-        """
-        ativ = SigaaScraper._atividades(_sel(html))
-        assert ativ[0]["id"] != ativ[1]["id"]
+        assert SigaaScraper._atividades(_sel(self._HTML_NORMAL))[0].materia == "MATÉRIA B"
 
     def test_sem_atividades_retorna_lista_vazia(self):
         html = '<div id="avaliacao-portal"><table><tbody></tbody></table></div>'
@@ -309,23 +291,13 @@ class TestAtualizacoesTurma:
         assert len(self._get()) == 2
 
     def test_materia(self):
-        assert self._get()[0]["materia"] == "INTELIGÊNCIA COMPUTACIONAL"
+        assert self._get()[0].materia == "INTELIGÊNCIA COMPUTACIONAL"
 
     def test_criacao_em_iso(self):
-        assert self._get()[0]["criacao"] == "2026-08-27"
+        assert self._get()[0].criacao == "2026-08-27"
 
     def test_descricao(self):
-        assert self._get()[0]["descricao"] == "Nova Notícia: Aula do dia 27/08/2026, quinta-feira."
-
-    def test_id_e_string_hexadecimal(self):
-        int(self._get()[0]["id"], 16)
-
-    def test_id_deterministico(self):
-        assert self._get()[0]["id"] == self._get()[0]["id"]
-
-    def test_ids_distintos_para_atualizacoes_distintas(self):
-        atualizacoes = self._get()
-        assert atualizacoes[0]["id"] != atualizacoes[1]["id"]
+        assert self._get()[0].descricao == "Nova Notícia: Aula do dia 27/08/2026, quinta-feira."
 
     def test_sem_tabelas_retorna_lista_vazia(self):
         assert SigaaScraper._atualizacoes_turma(_sel(self._HTML_VAZIO)) == []
@@ -336,6 +308,7 @@ class TestAtualizacoesTurma:
 _PAGINA_VALIDA = f"""
 <html><body>
   {" ".join(_PAGE_MARKERS)}
+  <p class="usuario"><span>João da Silva</span></p>
   <span class="nome"><b>João da Silva</b></span>
   <table>
     <tr><td>Matrícula:</td><td>202300001</td></tr>
@@ -371,54 +344,60 @@ _PAGINA_VALIDA = f"""
 
 
 class TestParseDiscente:
-    def _parse(self, html: str = _PAGINA_VALIDA) -> dict:
+    def _parse(self, html: str = _PAGINA_VALIDA) -> Discente:
         return SigaaScraper._parse_discente(_sel(html))
 
-    def test_retorna_dict(self):
-        assert isinstance(self._parse(), dict)
+    def test_retorna_discente(self):
+        assert isinstance(self._parse(), Discente)
 
     def test_campos_texto(self):
         item = self._parse()
-        assert item["nome"] == "João da Silva"
-        assert item["matricula"] == "202300001"
-        assert item["nivel"] == "Graduação"
-        assert item["status"] == "Ativo"
-        assert item["entrada"] == "2023.1"
+        assert item.nome == "João da Silva"
+        assert item.matricula == "202300001"
+        assert item.nivel == "Graduação"
+        assert item.status == "Ativo"
+        assert item.entrada == "2023.1"
+
+    def test_nome_titulo(self):
+        assert self._parse().nome_titulo == "João da Silva"
 
     def test_curso_com_espacos_extras_normalizado(self):
-        assert self._parse()["curso"] == "Ciência da Computação"
+        assert self._parse().curso == "Ciência da Computação"
 
     def test_email_com_arroba_recebe_dominio_discente_ufg(self):
-        assert self._parse()["email"] == "joao@discente.ufg.br"
+        assert self._parse().email == "joao@discente.ufg.br"
 
     def test_email_sem_arroba_fica_inalterado(self):
         html = _PAGINA_VALIDA.replace("joao@ufg.br", "joao.semdominio")
-        assert self._parse(html)["email"] == "joao.semdominio"
+        assert self._parse(html).email == "joao.semdominio"
 
     def test_indices_convertidos_para_float(self):
         item = self._parse()
-        assert item["ip"] == 8.5
-        assert item["ti"] == 25.0
-        assert item["ta"] == 100.0
-        assert item["qr"] == 0.0
-        assert item["mge"] == 9.0
-        assert item["mre"] == 85.0
-        assert item["pmf"] == 95.0
+        assert item.ip == 8.5
+        assert item.ti == 25.0
+        assert item.ta == 100.0
+        assert item.qr == 0.0
+        assert item.mge == 9.0
+        assert item.mre == 85.0
+        assert item.pmf == 95.0
 
     def test_ch_convertidas_para_int(self):
         item = self._parse()
-        assert item["ch_exigida"] == 3200
-        assert item["ch_cursada"] == 800
+        assert item.ch_exigida == 3200
+        assert item.ch_cursada == 800
 
-    def test_materias_e_lista(self):
-        assert isinstance(self._parse()["materias"], list)
+    def test_turmas_e_lista(self):
+        assert isinstance(self._parse().turmas, list)
 
-    def test_materias_extraidas(self):
-        nomes = [m["nome"] for m in self._parse()["materias"]]
+    def test_turmas_extraidas(self):
+        nomes = [t.nome for t in self._parse().turmas]
         assert "Algoritmos e Programação" in nomes
 
     def test_atividades_e_lista(self):
-        assert isinstance(self._parse()["atividades"], list)
+        assert isinstance(self._parse().atividades, list)
 
     def test_atualizacoes_turma_e_lista(self):
-        assert isinstance(self._parse()["atualizacoes_turma"], list)
+        assert isinstance(self._parse().atualizacoes_turma, list)
+
+    def test_topicos_forum_e_lista(self):
+        assert isinstance(self._parse().topicos_forum, list)

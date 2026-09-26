@@ -1,0 +1,109 @@
+nome: JOAO JOAQUIM JOSE
+nome_titulo: JOAO JOAQUIM JOSE
+matricula: 040028922
+curso: ENGENHARIA DE COMPUTAÇÃO - Bacharelado - Presencial - Goiânia - MVN
+nivel: GRADUAÇÃO
+status: ATIVO
+email: aluno_anonimo@discente.ufg.br
+entrada: '2022.1'
+ip: 98.9
+ti: 0.79
+ta: 0.91
+qr: 0.0
+mge: 8.3
+mre: 2.06
+pmf: 95.79
+ch_exigida: 4132
+ch_cursada: 3266
+turmas:
+  count: 4
+  items:
+  - nome: COMPILADORES 1
+    local: 'Sala 201 ( 5ª: Lab. 100) - CAE'
+    horario: 35N23 *
+  - nome: ENGENHARIA DE SOFTWARE 1
+    local: Lab. 200 - CAE, EMC
+    horario: 24N45
+  - nome: INTELIGÊNCIA COMPUTACIONAL
+    local: 'Sala 201/5ª: Lab. 200- CAE, EMC'
+    horario: 35N45
+  - nome: PESQUISA OPERACIONAL 1
+    local: Sala 101/ Lab100 CAE
+    horario: 24N23
+atividades:
+  count: 2
+  items:
+  - tipo: alerta
+    due: '2026-09-28'
+    nome: 1ª Avaliação
+    materia: PESQUISA OPERACIONAL 1
+  - tipo: normal
+    due: '2026-09-22T23:59:00-03:00'
+    nome: Recurso das correções da gincana de requisitos
+    materia: ENGENHARIA DE SOFTWARE 1
+atualizacoes_turma:
+  count: 10
+  items:
+  - materia: INTELIGÊNCIA COMPUTACIONAL
+    criacao: '2026-09-24'
+    descricao: 'Nova Notícia: Atividade do dia 24/09/2026, quinta-feira'
+  - materia: ENGENHARIA DE SOFTWARE 1
+    criacao: '2026-09-21'
+    descricao: 'Indicação de Site: Interface Ser humano-Computador'
+  - materia: INTELIGÊNCIA COMPUTACIONAL
+    criacao: '2026-09-17'
+    descricao: 'Nova Notícia: Aula do dia 17/09/2026, quinta-feira'
+  - materia: COMPILADORES 1
+    criacao: '2026-09-17'
+    descricao: 'Nova Notícia: Aula do dia 17/09/2026, quinta-feira.'
+  - materia: ENGENHARIA DE SOFTWARE 1
+    criacao: '2026-09-16'
+    descricao: 'Indicação de Site: Quiz Visões Arquiteturais'
+  - materia: ENGENHARIA DE SOFTWARE 1
+    criacao: '2026-09-16'
+    descricao: 'Indicação de Site: Arquitetura de Software'
+  - materia: ENGENHARIA DE SOFTWARE 1
+    criacao: '2026-09-16'
+    descricao: 'Nova tarefa: Recurso das correções da gincana de requisitos'
+  - materia: ENGENHARIA DE SOFTWARE 1
+    criacao: '2026-09-09'
+    descricao: 'Nova Notícia: Resultado FInal da Gincana sobre Processos de Software'
+  - materia: ENGENHARIA DE SOFTWARE 1
+    criacao: '2026-09-09'
+    descricao: Tarefa alterada.
+  - materia: ENGENHARIA DE SOFTWARE 1
+    criacao: '2026-09-09'
+    descricao: Tarefa alterada.
+topicos_forum:
+  count: 6
+  items:
+  - titulo: IRC da computação e expansão liberachat
+    autor: autor_anonimo
+    autor_nome: AUTOR ANONIMO
+    respostas: 1
+    data: '2026-08-19T20:33:24-03:00'
+  - titulo: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+    autor: autor_anonimo
+    autor_nome: AUTOR ANONIMO
+    respostas: 75
+    data: '2026-08-19T05:51:48-03:00'
+  - titulo: Qual o melhor professor da EMC ?
+    autor: autor_anonimo
+    autor_nome: AUTOR ANONIMO
+    respostas: 16
+    data: '2026-06-08T12:49:41-03:00'
+  - titulo: Lifehacks da engenharia
+    autor: autor_anonimo
+    autor_nome: AUTOR ANONIMO
+    respostas: 7
+    data: '2026-02-13T11:57:27-03:00'
+  - titulo: Férias part 2
+    autor: autor_anonimo
+    autor_nome: AUTOR ANONIMO
+    respostas: 3
+    data: '2025-12-22T23:21:10-03:00'
+  - titulo: Recomendações de Cursos
+    autor: autor_anonimo
+    autor_nome: AUTOR ANONIMO
+    respostas: 5
+    data: '2025-11-11T13:23:56-03:00'
