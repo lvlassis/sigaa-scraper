@@ -1,17 +1,11 @@
 import re
 from datetime import date, datetime, timedelta, timezone
 
-import requests
 from parsel import Selector
 
-from .models import Atividade, AtualizacaoTurma, Discente, Turma
+from .models import Atividade, AtualizacaoTurma, Discente, TopicoForum, Turma
+from .pages import fetch_pagina_discente
 
-_SIGAA_URL = "https://sigaa.sistemas.ufg.br/sigaa/portais/discente/discente.jsf"
-_USER_AGENT = (
-    "Mozilla/5.0 (X11; Linux x86_64) "
-    "AppleWebKit/537.36 (KHTML, like Gecko) "
-    "Chrome/124.0.0.0 Safari/537.36"
-)
 _TZ_BRT = timezone(timedelta(hours=-3))
 _ALERTA_IMG = "prova_semana.png"
 _SESSION_EXPIRED_MARKER = "alert('Sua sessão foi expirada. É necessário autenticar-se novamente!');"
@@ -62,11 +56,7 @@ class SigaaScraper:
             SessionExpiredError: Se os cookies estiverem expirados ou inválidos.
             UnexpectedPageError: Se o SIGAA retornar uma página fora do formato esperado.
         """
-        response = requests.get(
-            _SIGAA_URL,
-            headers={"Cookie": self._cookies, "User-Agent": _USER_AGENT},
-        )
-        body = response.text
+        body = fetch_pagina_discente(self._cookies)
         self._check_response(body)
         return self._parse_discente(Selector(text=body))
 
@@ -82,6 +72,7 @@ class SigaaScraper:
         raw_email = SigaaScraper._field(sel, "E-Mail:")
         return Discente(
             nome=sel.xpath('//span[@class="nome"]//b/text()').get("").strip(),
+            nome_titulo=sel.xpath('//p[@class="usuario"]/span/text()').get("").strip(),
             matricula=SigaaScraper._field(sel, "Matrícula:"),
             curso=" ".join(SigaaScraper._field(sel, "Curso:").split()),
             nivel=SigaaScraper._field(sel, "Nível:"),
@@ -104,6 +95,7 @@ class SigaaScraper:
             turmas=SigaaScraper._turmas(sel),
             atividades=SigaaScraper._atividades(sel),
             atualizacoes_turma=SigaaScraper._atualizacoes_turma(sel),
+            topicos_forum=SigaaScraper._topicos_forum(sel),
         )
 
     @staticmethod
@@ -153,8 +145,14 @@ class SigaaScraper:
         for row in rows:
             tipo = "alerta" if row.xpath(f'td[1]//img[contains(@src, "{_ALERTA_IMG}")]') else "normal"
             due_raw = " ".join(row.xpath('td[2]//text()').getall())
-            due = SigaaScraper._parse_due(due_raw)
-            nome = row.xpath('td[3]/small//a/text()').get("").strip()
+            due = SigaaScraper._parse_due(due_raw) or SigaaScraper._parse_date(due_raw)
+            strong_label = row.xpath('td[3]/small//strong/text()').get("").strip()
+            if "Avaliação" in strong_label:
+                nome = " ".join(
+                    t.strip() for t in row.xpath('td[3]/small//strong/following-sibling::text()').getall() if t.strip()
+                )
+            else:
+                nome = row.xpath('td[3]/small//a/text()').get("").strip()
             materia = row.xpath('(td[3]/small//text()[normalize-space()!=""])[1]').get("").strip()
             result.append(Atividade(tipo=tipo, due=due, nome=nome, materia=materia))
         return result
@@ -171,6 +169,15 @@ class SigaaScraper:
         return result
 
     @staticmethod
+    def _parse_datetime(text: str) -> str | None:
+        m = re.search(r'(\d{2})/(\d{2})/(\d{4})\s+(\d{2}):(\d{2}):(\d{2})', text)
+        if not m:
+            return None
+        d, mo, y, h, mi, s = m.groups()
+        dt = datetime(int(y), int(mo), int(d), int(h), int(mi), int(s), tzinfo=_TZ_BRT)
+        return dt.isoformat()
+
+    @staticmethod
     def _turmas(sel: Selector) -> list[Turma]:
         rows = sel.xpath(
             '//th[normalize-space()="Componente Curricular"]'
@@ -183,4 +190,17 @@ class SigaaScraper:
             horario = row.xpath('normalize-space(td[3]//center)').get("").strip()
             if nome:
                 result.append(Turma(nome=nome, local=local, horario=horario))
+        return result
+
+    @staticmethod
+    def _topicos_forum(sel: Selector) -> list[TopicoForum]:
+        rows = sel.xpath('//div[@id="forum-portal"]//tbody/tr')
+        result = []
+        for row in rows:
+            titulo = row.xpath('normalize-space(td[1]/a)').get("").strip()
+            autor = row.xpath('normalize-space(td[2]/acronym)').get("").strip()
+            autor_nome = row.xpath('td[2]/acronym/@title').get("").strip()
+            respostas = SigaaScraper._parse_int(row.xpath('normalize-space(td[3])').get("").strip()) or 0
+            data = SigaaScraper._parse_datetime(row.xpath('normalize-space(td[4])').get(""))
+            result.append(TopicoForum(titulo=titulo, autor=autor, autor_nome=autor_nome, respostas=respostas, data=data))
         return result

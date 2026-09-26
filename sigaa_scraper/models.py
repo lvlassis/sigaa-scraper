@@ -5,6 +5,22 @@ from typing import Literal
 
 
 @dataclass
+class TopicoForum:
+    """Tópico exibido no painel do fórum do curso."""
+
+    titulo: str
+    """Título do tópico."""
+    autor: str
+    """Login do autor."""
+    autor_nome: str
+    """Nome completo do autor (atributo ``title`` do ``<acronym>``)."""
+    respostas: int
+    """Número de respostas."""
+    data: str | None
+    """Data da última atualização em ISO 8601 com fuso BRT."""
+
+
+@dataclass
 class Atividade:
     """Atividade avaliativa pendente."""
 
@@ -48,6 +64,8 @@ class Discente:
 
     nome: str
     """Nome completo."""
+    nome_titulo: str
+    """Nome exibido no título da página (``<p class="usuario">``)."""
     matricula: str
     """Número de matrícula."""
     curso: str
@@ -84,3 +102,5 @@ class Discente:
     """Atividades avaliativas pendentes."""
     atualizacoes_turma: list[AtualizacaoTurma]
     """Atualizações recentes das turmas."""
+    topicos_forum: list[TopicoForum]
+    """Tópicos recentes do fórum do curso."""
