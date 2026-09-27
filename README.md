@@ -6,8 +6,27 @@ Biblioteca Python para scraping do portal discente do SIGAA UFG. Extrai perfil a
 
 ## Instalação
 
+**pip**
 ```bash
 pip install git+https://github.com/lvlassis/sigaa-scraper.git
+```
+
+**NixOS / Nix**
+
+Adicione como input no seu `flake.nix`:
+
+```nix
+inputs.sigaa-scraper.url = "github:lvlassis/sigaa-scraper";
+```
+
+Então inclua o pacote onde for conveniente:
+
+```nix
+# NixOS — environment.systemPackages
+environment.systemPackages = [ inputs.sigaa-scraper.packages.${system}.default ];
+
+# home-manager — home.packages
+home.packages = [ inputs.sigaa-scraper.packages.${pkgs.system}.default ];
 ```
 
 ## Quick Start
