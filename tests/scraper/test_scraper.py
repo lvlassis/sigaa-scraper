@@ -2,7 +2,7 @@ import pytest
 from parsel import Selector
 
 from sigaa_scraper.models import Discente
-from sigaa_scraper.scraper import (
+from sigaa_scraper.scraper_discente import (
     SigaaScraper,
     SessionExpiredError,
     UnexpectedPageError,

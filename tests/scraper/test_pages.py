@@ -1,7 +1,7 @@
 import pytest
 from parsel import Selector
 
-from sigaa_scraper.scraper import SigaaScraper
+from sigaa_scraper.scraper_discente import SigaaScraper
 from tests.conftest import page_vectors
 
 

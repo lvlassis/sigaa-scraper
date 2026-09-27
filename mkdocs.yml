@@ -42,4 +42,7 @@ nav:
   - Início: index.md
   - Quick Start: quickstart.md
   - Referência da API: reference.md
-  - Contribuindo: contributing.md
+  - Contribuindo:
+    - Configurando o ambiente: contributing.md
+    - Gerando páginas de teste: fixtures.md
+    - Adicionando uma nova página: nova-pagina.md

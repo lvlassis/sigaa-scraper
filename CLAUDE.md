@@ -40,7 +40,7 @@ The library scrapes the authenticated student portal of SIGAA UFG (`sigaa.sistem
 ### Module layout
 
 - **`sigaa_scraper/pages.py`** — thin HTTP layer. `fetch_pagina_discente(cookies)` does the single GET request and returns raw HTML.
-- **`sigaa_scraper/scraper.py`** — all parsing logic lives here as static methods on `SigaaScraper`. `get_discente()` calls `fetch_pagina_discente`, validates the response, then runs `_parse_discente` which delegates to per-section helpers (`_turmas`, `_atividades`, `_atualizacoes_turma`, `_topicos_forum`). Parsing uses `parsel.Selector` (XPath).
+- **`sigaa_scraper/scraper_discente.py`** — all parsing logic lives here as static methods on `SigaaScraper`. `get_discente()` calls `fetch_pagina_discente`, validates the response, then runs `_parse_discente` which delegates to per-section helpers (`_turmas`, `_atividades`, `_atualizacoes_turma`, `_topicos_forum`). Parsing uses `parsel.Selector` (XPath). Each page gets its own `scraper_<page>.py` file.
 - **`sigaa_scraper/models.py`** — plain `@dataclass` types: `Discente`, `Turma`, `Atividade`, `AtualizacaoTurma`, `TopicoForum`. `Discente` is the root object returned by `get_discente()`.
 - **`sigaa_scraper/__init__.py`** — public API surface (`SigaaScraper`, `SessionExpiredError`, `UnexpectedPageError`, and the four model types).
 

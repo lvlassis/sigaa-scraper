@@ -15,7 +15,7 @@ from pathlib import Path
 import yaml
 from parsel import Selector
 
-from sigaa_scraper.scraper import SigaaScraper
+from sigaa_scraper.scraper_discente import SigaaScraper
 
 _PAGES_DIR = Path(__file__).parent / "pages"
 
