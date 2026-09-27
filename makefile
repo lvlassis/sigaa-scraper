@@ -8,6 +8,9 @@ setup:
 docs:
 	mkdocs serve
 
+deploy-docs:
+	mkdocs gh-deploy
+
 pages:
 	python tests/download_pages.py
 
