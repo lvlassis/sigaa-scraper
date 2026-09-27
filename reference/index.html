@@ -16,6 +16,8 @@
         <link rel="prev" href="../quickstart/">
       
       
+        <link rel="next" href="../contributing/">
+      
       
         
       
@@ -447,6 +449,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#sigaa_scraper.Discente.nome_titulo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        nome_titulo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#sigaa_scraper.Discente.matricula" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -638,6 +651,17 @@
     <span class="md-ellipsis">
       
         atualizacoes_turma
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sigaa_scraper.Discente.topicos_forum" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        topicos_forum
       
     </span>
   </a>
@@ -851,6 +875,149 @@
   
 
     
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contribuindo
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Contribuindo
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contributing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configurando o ambiente
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fixtures/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gerando páginas de teste
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nova-pagina/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Adicionando uma nova página
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -944,6 +1111,17 @@
     <span class="md-ellipsis">
       
         nome
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sigaa_scraper.Discente.nome_titulo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        nome_titulo
       
     </span>
   </a>
@@ -1142,6 +1320,17 @@
     <span class="md-ellipsis">
       
         atualizacoes_turma
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sigaa_scraper.Discente.topicos_forum" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        topicos_forum
       
     </span>
   </a>
@@ -1438,8 +1627,15 @@ print(discente.nome)
 
 
               <details class="mkdocstrings-source">
-                <summary>Source code in <code>sigaa_scraper/scraper.py</code></summary>
-                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 31</span>
+                <summary>Source code in <code>sigaa_scraper/scraper_discente.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
 <span class="normal"> 32</span>
 <span class="normal"> 33</span>
 <span class="normal"> 34</span>
@@ -1601,7 +1797,20 @@ print(discente.nome)
 <span class="normal">190</span>
 <span class="normal">191</span>
 <span class="normal">192</span>
-<span class="normal">193</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">SigaaScraper</span><span class="p">:</span>
+<span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span>
+<span class="normal">206</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">SigaaScraper</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">"""Cliente de scraping para o portal discente do SIGAA UFG.</span>
 
 <span class="sd">    Args:</span>
@@ -1636,11 +1845,7 @@ print(discente.nome)
 <span class="sd">            SessionExpiredError: Se os cookies estiverem expirados ou inválidos.</span>
 <span class="sd">            UnexpectedPageError: Se o SIGAA retornar uma página fora do formato esperado.</span>
 <span class="sd">        """</span>
-        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
-            <span class="n">_SIGAA_URL</span><span class="p">,</span>
-            <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">"Cookie"</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cookies</span><span class="p">,</span> <span class="s2">"User-Agent"</span><span class="p">:</span> <span class="n">_USER_AGENT</span><span class="p">},</span>
-        <span class="p">)</span>
-        <span class="n">body</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">text</span>
+        <span class="n">body</span> <span class="o">=</span> <span class="n">fetch_pagina_discente</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cookies</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_check_response</span><span class="p">(</span><span class="n">body</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parse_discente</span><span class="p">(</span><span class="n">Selector</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="n">body</span><span class="p">))</span>
 
@@ -1656,6 +1861,7 @@ print(discente.nome)
         <span class="n">raw_email</span> <span class="o">=</span> <span class="n">SigaaScraper</span><span class="o">.</span><span class="n">_field</span><span class="p">(</span><span class="n">sel</span><span class="p">,</span> <span class="s2">"E-Mail:"</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">Discente</span><span class="p">(</span>
             <span class="n">nome</span><span class="o">=</span><span class="n">sel</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">'//span[@class="nome"]//b/text()'</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span>
+            <span class="n">nome_titulo</span><span class="o">=</span><span class="n">sel</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">'//p[@class="usuario"]/span/text()'</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span>
             <span class="n">matricula</span><span class="o">=</span><span class="n">SigaaScraper</span><span class="o">.</span><span class="n">_field</span><span class="p">(</span><span class="n">sel</span><span class="p">,</span> <span class="s2">"Matrícula:"</span><span class="p">),</span>
             <span class="n">curso</span><span class="o">=</span><span class="s2">" "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">SigaaScraper</span><span class="o">.</span><span class="n">_field</span><span class="p">(</span><span class="n">sel</span><span class="p">,</span> <span class="s2">"Curso:"</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">()),</span>
             <span class="n">nivel</span><span class="o">=</span><span class="n">SigaaScraper</span><span class="o">.</span><span class="n">_field</span><span class="p">(</span><span class="n">sel</span><span class="p">,</span> <span class="s2">"Nível:"</span><span class="p">),</span>
@@ -1678,6 +1884,7 @@ print(discente.nome)
             <span class="n">turmas</span><span class="o">=</span><span class="n">SigaaScraper</span><span class="o">.</span><span class="n">_turmas</span><span class="p">(</span><span class="n">sel</span><span class="p">),</span>
             <span class="n">atividades</span><span class="o">=</span><span class="n">SigaaScraper</span><span class="o">.</span><span class="n">_atividades</span><span class="p">(</span><span class="n">sel</span><span class="p">),</span>
             <span class="n">atualizacoes_turma</span><span class="o">=</span><span class="n">SigaaScraper</span><span class="o">.</span><span class="n">_atualizacoes_turma</span><span class="p">(</span><span class="n">sel</span><span class="p">),</span>
+            <span class="n">topicos_forum</span><span class="o">=</span><span class="n">SigaaScraper</span><span class="o">.</span><span class="n">_topicos_forum</span><span class="p">(</span><span class="n">sel</span><span class="p">),</span>
         <span class="p">)</span>
 
     <span class="nd">@staticmethod</span>
@@ -1727,13 +1934,16 @@ print(discente.nome)
         <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">:</span>
             <span class="n">tipo</span> <span class="o">=</span> <span class="s2">"alerta"</span> <span class="k">if</span> <span class="n">row</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="sa">f</span><span class="s1">'td[1]//img[contains(@src, "</span><span class="si">{</span><span class="n">_ALERTA_IMG</span><span class="si">}</span><span class="s1">")]'</span><span class="p">)</span> <span class="k">else</span> <span class="s2">"normal"</span>
             <span class="n">due_raw</span> <span class="o">=</span> <span class="s2">" "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">'td[2]//text()'</span><span class="p">)</span><span class="o">.</span><span class="n">getall</span><span class="p">())</span>
-            <span class="n">due</span> <span class="o">=</span> <span class="n">SigaaScraper</span><span class="o">.</span><span class="n">_parse_due</span><span class="p">(</span><span class="n">due_raw</span><span class="p">)</span>
-            <span class="n">nome</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">'td[3]/small//a/text()'</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+            <span class="n">due</span> <span class="o">=</span> <span class="n">SigaaScraper</span><span class="o">.</span><span class="n">_parse_due</span><span class="p">(</span><span class="n">due_raw</span><span class="p">)</span> <span class="ow">or</span> <span class="n">SigaaScraper</span><span class="o">.</span><span class="n">_parse_date</span><span class="p">(</span><span class="n">due_raw</span><span class="p">)</span>
+            <span class="n">strong_label</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">'td[3]/small//strong/text()'</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+            <span class="k">if</span> <span class="s2">"Avaliação"</span> <span class="ow">in</span> <span class="n">strong_label</span><span class="p">:</span>
+                <span class="n">nome</span> <span class="o">=</span> <span class="s2">" "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+                    <span class="n">t</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">row</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">'td[3]/small//strong/following-sibling::text()'</span><span class="p">)</span><span class="o">.</span><span class="n">getall</span><span class="p">()</span> <span class="k">if</span> <span class="n">t</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+                <span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">nome</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">'td[3]/small//a/text()'</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
             <span class="n">materia</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">'(td[3]/small//text()[normalize-space()!=""])[1]'</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
-            <span class="n">hasher</span> <span class="o">=</span> <span class="n">xxhash</span><span class="o">.</span><span class="n">xxh3_128</span><span class="p">()</span>
-            <span class="k">for</span> <span class="n">part</span> <span class="ow">in</span> <span class="p">(</span><span class="n">due</span> <span class="ow">or</span> <span class="s2">""</span><span class="p">,</span> <span class="n">nome</span><span class="p">,</span> <span class="n">materia</span><span class="p">):</span>
-                <span class="n">hasher</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">part</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>
-            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Atividade</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">hasher</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">(),</span> <span class="n">tipo</span><span class="o">=</span><span class="n">tipo</span><span class="p">,</span> <span class="n">due</span><span class="o">=</span><span class="n">due</span><span class="p">,</span> <span class="n">nome</span><span class="o">=</span><span class="n">nome</span><span class="p">,</span> <span class="n">materia</span><span class="o">=</span><span class="n">materia</span><span class="p">))</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Atividade</span><span class="p">(</span><span class="n">tipo</span><span class="o">=</span><span class="n">tipo</span><span class="p">,</span> <span class="n">due</span><span class="o">=</span><span class="n">due</span><span class="p">,</span> <span class="n">nome</span><span class="o">=</span><span class="n">nome</span><span class="p">,</span> <span class="n">materia</span><span class="o">=</span><span class="n">materia</span><span class="p">))</span>
         <span class="k">return</span> <span class="n">result</span>
 
     <span class="nd">@staticmethod</span>
@@ -1744,11 +1954,17 @@ print(discente.nome)
             <span class="n">materia</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">'normalize-space(.//tr[1]/td/a)'</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
             <span class="n">criacao</span> <span class="o">=</span> <span class="n">SigaaScraper</span><span class="o">.</span><span class="n">_parse_date</span><span class="p">(</span><span class="n">table</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">'.//tr[1]/td/text()'</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">""</span><span class="p">))</span>
             <span class="n">descricao</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">'normalize-space(.//tr[2]/td)'</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
-            <span class="n">hasher</span> <span class="o">=</span> <span class="n">xxhash</span><span class="o">.</span><span class="n">xxh3_128</span><span class="p">()</span>
-            <span class="k">for</span> <span class="n">part</span> <span class="ow">in</span> <span class="p">(</span><span class="n">materia</span><span class="p">,</span> <span class="n">criacao</span> <span class="ow">or</span> <span class="s2">""</span><span class="p">,</span> <span class="n">descricao</span><span class="p">):</span>
-                <span class="n">hasher</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">part</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>
-            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">AtualizacaoTurma</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">hasher</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">(),</span> <span class="n">materia</span><span class="o">=</span><span class="n">materia</span><span class="p">,</span> <span class="n">criacao</span><span class="o">=</span><span class="n">criacao</span><span class="p">,</span> <span class="n">descricao</span><span class="o">=</span><span class="n">descricao</span><span class="p">))</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">AtualizacaoTurma</span><span class="p">(</span><span class="n">materia</span><span class="o">=</span><span class="n">materia</span><span class="p">,</span> <span class="n">criacao</span><span class="o">=</span><span class="n">criacao</span><span class="p">,</span> <span class="n">descricao</span><span class="o">=</span><span class="n">descricao</span><span class="p">))</span>
         <span class="k">return</span> <span class="n">result</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_parse_datetime</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">'(\d</span><span class="si">{2}</span><span class="s1">)/(\d</span><span class="si">{2}</span><span class="s1">)/(\d</span><span class="si">{4}</span><span class="s1">)\s+(\d</span><span class="si">{2}</span><span class="s1">):(\d</span><span class="si">{2}</span><span class="s1">):(\d</span><span class="si">{2}</span><span class="s1">)'</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">m</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="n">d</span><span class="p">,</span> <span class="n">mo</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">mi</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">groups</span><span class="p">()</span>
+        <span class="n">dt</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">mo</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">d</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">h</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">mi</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">s</span><span class="p">),</span> <span class="n">tzinfo</span><span class="o">=</span><span class="n">_TZ_BRT</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">dt</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()</span>
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">_turmas</span><span class="p">(</span><span class="n">sel</span><span class="p">:</span> <span class="n">Selector</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Turma</span><span class="p">]:</span>
@@ -1763,6 +1979,19 @@ print(discente.nome)
             <span class="n">horario</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">'normalize-space(td[3]//center)'</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
             <span class="k">if</span> <span class="n">nome</span><span class="p">:</span>
                 <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Turma</span><span class="p">(</span><span class="n">nome</span><span class="o">=</span><span class="n">nome</span><span class="p">,</span> <span class="n">local</span><span class="o">=</span><span class="n">local</span><span class="p">,</span> <span class="n">horario</span><span class="o">=</span><span class="n">horario</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">result</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_topicos_forum</span><span class="p">(</span><span class="n">sel</span><span class="p">:</span> <span class="n">Selector</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">TopicoForum</span><span class="p">]:</span>
+        <span class="n">rows</span> <span class="o">=</span> <span class="n">sel</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">'//div[@id="forum-portal"]//tbody/tr'</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">:</span>
+            <span class="n">titulo</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">'normalize-space(td[1]/a)'</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+            <span class="n">autor</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">'normalize-space(td[2]/acronym)'</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+            <span class="n">autor_nome</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">'td[2]/acronym/@title'</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+            <span class="n">respostas</span> <span class="o">=</span> <span class="n">SigaaScraper</span><span class="o">.</span><span class="n">_parse_int</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">'normalize-space(td[3])'</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span> <span class="ow">or</span> <span class="mi">0</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">SigaaScraper</span><span class="o">.</span><span class="n">_parse_datetime</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">'normalize-space(td[4])'</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">""</span><span class="p">))</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">TopicoForum</span><span class="p">(</span><span class="n">titulo</span><span class="o">=</span><span class="n">titulo</span><span class="p">,</span> <span class="n">autor</span><span class="o">=</span><span class="n">autor</span><span class="p">,</span> <span class="n">autor_nome</span><span class="o">=</span><span class="n">autor_nome</span><span class="p">,</span> <span class="n">respostas</span><span class="o">=</span><span class="n">respostas</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">))</span>
         <span class="k">return</span> <span class="n">result</span>
 </code></pre></div></td></tr></table></div>
               </details>
@@ -1870,7 +2099,7 @@ acadêmico completo do discente.</p>
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code><a class="autorefs autorefs-internal" title="sigaa_scraper.SessionExpiredError (sigaa_scraper.scraper.SessionExpiredError)" href="#sigaa_scraper.SessionExpiredError">SessionExpiredError</a></code>
+                  <code><a class="autorefs autorefs-internal" title="sigaa_scraper.SessionExpiredError (sigaa_scraper.scraper_discente.SessionExpiredError)" href="#sigaa_scraper.SessionExpiredError">SessionExpiredError</a></code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -1880,7 +2109,7 @@ acadêmico completo do discente.</p>
           </tr>
           <tr class="doc-section-item">
             <td>
-                  <code><a class="autorefs autorefs-internal" title="sigaa_scraper.UnexpectedPageError (sigaa_scraper.scraper.UnexpectedPageError)" href="#sigaa_scraper.UnexpectedPageError">UnexpectedPageError</a></code>
+                  <code><a class="autorefs autorefs-internal" title="sigaa_scraper.UnexpectedPageError (sigaa_scraper.scraper_discente.UnexpectedPageError)" href="#sigaa_scraper.UnexpectedPageError">UnexpectedPageError</a></code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -1893,8 +2122,15 @@ acadêmico completo do discente.</p>
 
 
             <details class="mkdocstrings-source">
-              <summary>Source code in <code>sigaa_scraper/scraper.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">51</span>
+              <summary>Source code in <code>sigaa_scraper/scraper_discente.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
 <span class="normal">52</span>
 <span class="normal">53</span>
 <span class="normal">54</span>
@@ -1904,18 +2140,7 @@ acadêmico completo do discente.</p>
 <span class="normal">58</span>
 <span class="normal">59</span>
 <span class="normal">60</span>
-<span class="normal">61</span>
-<span class="normal">62</span>
-<span class="normal">63</span>
-<span class="normal">64</span>
-<span class="normal">65</span>
-<span class="normal">66</span>
-<span class="normal">67</span>
-<span class="normal">68</span>
-<span class="normal">69</span>
-<span class="normal">70</span>
-<span class="normal">71</span>
-<span class="normal">72</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_discente</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Discente</span><span class="p">:</span>
+<span class="normal">61</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_discente</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Discente</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">"""Busca e retorna o perfil acadêmico do discente.</span>
 
 <span class="sd">    Realiza uma requisição autenticada ao SIGAA e extrai o perfil</span>
@@ -1930,11 +2155,7 @@ acadêmico completo do discente.</p>
 <span class="sd">        SessionExpiredError: Se os cookies estiverem expirados ou inválidos.</span>
 <span class="sd">        UnexpectedPageError: Se o SIGAA retornar uma página fora do formato esperado.</span>
 <span class="sd">    """</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
-        <span class="n">_SIGAA_URL</span><span class="p">,</span>
-        <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">"Cookie"</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cookies</span><span class="p">,</span> <span class="s2">"User-Agent"</span><span class="p">:</span> <span class="n">_USER_AGENT</span><span class="p">},</span>
-    <span class="p">)</span>
-    <span class="n">body</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">text</span>
+    <span class="n">body</span> <span class="o">=</span> <span class="n">fetch_pagina_discente</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cookies</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">_check_response</span><span class="p">(</span><span class="n">body</span><span class="p">)</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parse_discente</span><span class="p">(</span><span class="n">Selector</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="n">body</span><span class="p">))</span>
 </code></pre></div></td></tr></table></div>
@@ -1982,53 +2203,59 @@ acadêmico completo do discente.</p>
 
               <details class="mkdocstrings-source">
                 <summary>Source code in <code>sigaa_scraper/models.py</code></summary>
-                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">45</span>
-<span class="normal">46</span>
-<span class="normal">47</span>
-<span class="normal">48</span>
-<span class="normal">49</span>
-<span class="normal">50</span>
-<span class="normal">51</span>
-<span class="normal">52</span>
-<span class="normal">53</span>
-<span class="normal">54</span>
-<span class="normal">55</span>
-<span class="normal">56</span>
-<span class="normal">57</span>
-<span class="normal">58</span>
-<span class="normal">59</span>
-<span class="normal">60</span>
-<span class="normal">61</span>
-<span class="normal">62</span>
-<span class="normal">63</span>
-<span class="normal">64</span>
-<span class="normal">65</span>
-<span class="normal">66</span>
-<span class="normal">67</span>
-<span class="normal">68</span>
-<span class="normal">69</span>
-<span class="normal">70</span>
-<span class="normal">71</span>
-<span class="normal">72</span>
-<span class="normal">73</span>
-<span class="normal">74</span>
-<span class="normal">75</span>
-<span class="normal">76</span>
-<span class="normal">77</span>
-<span class="normal">78</span>
-<span class="normal">79</span>
-<span class="normal">80</span>
-<span class="normal">81</span>
-<span class="normal">82</span>
-<span class="normal">83</span>
-<span class="normal">84</span>
-<span class="normal">85</span>
-<span class="normal">86</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@dataclass</span>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@dataclass</span>
 <span class="k">class</span><span class="w"> </span><span class="nc">Discente</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">"""Perfil acadêmico completo do discente."""</span>
 
     <span class="n">nome</span><span class="p">:</span> <span class="nb">str</span>
 <span class="w">    </span><span class="sd">"""Nome completo."""</span>
+    <span class="n">nome_titulo</span><span class="p">:</span> <span class="nb">str</span>
+<span class="w">    </span><span class="sd">"""Nome exibido no título da página (``&lt;p class="usuario"&gt;``)."""</span>
     <span class="n">matricula</span><span class="p">:</span> <span class="nb">str</span>
 <span class="w">    </span><span class="sd">"""Número de matrícula."""</span>
     <span class="n">curso</span><span class="p">:</span> <span class="nb">str</span>
@@ -2065,6 +2292,8 @@ acadêmico completo do discente.</p>
 <span class="w">    </span><span class="sd">"""Atividades avaliativas pendentes."""</span>
     <span class="n">atualizacoes_turma</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">AtualizacaoTurma</span><span class="p">]</span>
 <span class="w">    </span><span class="sd">"""Atualizações recentes das turmas."""</span>
+    <span class="n">topicos_forum</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">TopicoForum</span><span class="p">]</span>
+<span class="w">    </span><span class="sd">"""Tópicos recentes do fórum do curso."""</span>
 </code></pre></div></td></tr></table></div>
               </details>
 
@@ -2095,6 +2324,28 @@ acadêmico completo do discente.</p>
     <div class="doc doc-contents ">
 
         <p>Nome completo.</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="sigaa_scraper.Discente.nome_titulo" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">nome_titulo</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Nome exibido no título da página (<code>&lt;p class="usuario"&gt;</code>).</p>
 
     </div>
 
@@ -2496,6 +2747,28 @@ acadêmico completo do discente.</p>
 
 </div>
 
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="sigaa_scraper.Discente.topicos_forum" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">topicos_forum</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Tópicos recentes do fórum do curso.</p>
+
+    </div>
+
+</div>
+
 
 
 
@@ -2537,16 +2810,16 @@ acadêmico completo do discente.</p>
 
               <details class="mkdocstrings-source">
                 <summary>Source code in <code>sigaa_scraper/models.py</code></summary>
-                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span>
-<span class="normal">37</span>
-<span class="normal">38</span>
-<span class="normal">39</span>
-<span class="normal">40</span>
-<span class="normal">41</span>
-<span class="normal">42</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@dataclass</span>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@dataclass</span>
 <span class="k">class</span><span class="w"> </span><span class="nc">Turma</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">"""Turma matriculada no semestre atual."""</span>
 
@@ -2676,18 +2949,18 @@ acadêmico completo do discente.</p>
 
               <details class="mkdocstrings-source">
                 <summary>Source code in <code>sigaa_scraper/models.py</code></summary>
-                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@dataclass</span>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@dataclass</span>
 <span class="k">class</span><span class="w"> </span><span class="nc">Atividade</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">"""Atividade avaliativa pendente."""</span>
 
@@ -2841,16 +3114,16 @@ acadêmico completo do discente.</p>
 
               <details class="mkdocstrings-source">
                 <summary>Source code in <code>sigaa_scraper/models.py</code></summary>
-                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@dataclass</span>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@dataclass</span>
 <span class="k">class</span><span class="w"> </span><span class="nc">AtualizacaoTurma</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">"""Atualização publicada em uma turma."""</span>
 
@@ -2978,9 +3251,9 @@ acadêmico completo do discente.</p>
 
 
               <details class="mkdocstrings-source">
-                <summary>Source code in <code>sigaa_scraper/scraper.py</code></summary>
-                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">23</span>
-<span class="normal">24</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">SessionExpiredError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+                <summary>Source code in <code>sigaa_scraper/scraper_discente.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">16</span>
+<span class="normal">17</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">SessionExpiredError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Lançada quando os cookies da sessão estão expirados ou são inválidos."""</span>
 </code></pre></div></td></tr></table></div>
               </details>
@@ -3016,9 +3289,9 @@ acadêmico completo do discente.</p>
 
 
               <details class="mkdocstrings-source">
-                <summary>Source code in <code>sigaa_scraper/scraper.py</code></summary>
-                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">27</span>
-<span class="normal">28</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">UnexpectedPageError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+                <summary>Source code in <code>sigaa_scraper/scraper_discente.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">20</span>
+<span class="normal">21</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">UnexpectedPageError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Lançada quando o SIGAA retorna uma página fora do formato esperado."""</span>
 </code></pre></div></td></tr></table></div>
               </details>
