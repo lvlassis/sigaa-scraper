@@ -1,10 +1,10 @@
 [build-system]
-requires = ["hatchling"]
+requires = ["hatchling", "hatch-vcs"]
 build-backend = "hatchling.build"
 
 [project]
 name = "sigaa-scraper"
-version = "0.1.0"
+dynamic = ["version"]
 description = "Biblioteca de scraping do SIGAA UFG"
 readme = "README.md"
 license = { text = "MIT" }
@@ -26,6 +26,9 @@ dev = [
     "mkdocs-material>=9.0.0",
     "mkdocstrings[python]>=0.25.0",
 ]
+
+[tool.hatch.version]
+source = "vcs"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
