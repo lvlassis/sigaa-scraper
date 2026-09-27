@@ -44,5 +44,6 @@ nav:
   - Referência da API: reference.md
   - Contribuindo:
     - Configurando o ambiente: contributing.md
+    - CLI wrapper: cli.md
     - Gerando páginas de teste: fixtures.md
     - Adicionando uma nova página: nova-pagina.md

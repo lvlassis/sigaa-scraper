@@ -15,6 +15,9 @@ dependencies = [
     "parsel>=1.9.0",
 ]
 
+[project.scripts]
+sigaa-scraper = "sigaa_scraper.__main__:main"
+
 [project.urls]
 Repository = "https://github.com/lvlassis/sigaa-scraper"
 
