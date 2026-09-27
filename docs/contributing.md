@@ -1,4 +1,4 @@
-# Contribuição
+# Contribuindo
 
 ## Configurando o ambiente
 
