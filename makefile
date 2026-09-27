@@ -1,4 +1,9 @@
-.PHONY: docs pages oracle tests
+.PHONY: setup docs pages oracle tests
+
+setup:
+	python3 -m venv .venv
+	.venv/bin/pip install --upgrade pip
+	.venv/bin/pip install -e . --group dev
 
 docs:
 	mkdocs serve
