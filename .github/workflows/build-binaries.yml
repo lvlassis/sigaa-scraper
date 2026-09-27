@@ -1,0 +1,49 @@
+name: Build binaries
+
+on:
+  push:
+    tags:
+      - '*'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        include:
+          - os: ubuntu-latest
+            asset_name: sigaa-scraper-linux-x86_64
+          - os: macos-latest
+            asset_name: sigaa-scraper-macos-arm64
+          - os: windows-latest
+            asset_name: sigaa-scraper-windows-x86_64.exe
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - uses: astral-sh/setup-uv@v3
+
+      - run: uv pip install --system . pyinstaller
+
+      - run: pyinstaller --onefile --name sigaa-scraper sigaa_scraper/__main__.py
+
+      - name: Rename binary
+        shell: bash
+        run: |
+          src="dist/sigaa-scraper"
+          [ "$RUNNER_OS" = "Windows" ] && src="dist/sigaa-scraper.exe"
+          mv "$src" "dist/${{ matrix.asset_name }}"
+
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: dist/${{ matrix.asset_name }}
