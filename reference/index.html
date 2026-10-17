@@ -1656,7 +1656,14 @@ print(discente.nome)
 
               <details class="mkdocstrings-source">
                 <summary>Source code in <code>sigaa_scraper/scraper_discente.py</code></summary>
-                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 24</span>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 17</span>
+<span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
 <span class="normal"> 25</span>
 <span class="normal"> 26</span>
 <span class="normal"> 27</span>
@@ -1831,14 +1838,7 @@ print(discente.nome)
 <span class="normal">196</span>
 <span class="normal">197</span>
 <span class="normal">198</span>
-<span class="normal">199</span>
-<span class="normal">200</span>
-<span class="normal">201</span>
-<span class="normal">202</span>
-<span class="normal">203</span>
-<span class="normal">204</span>
-<span class="normal">205</span>
-<span class="normal">206</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">SigaaScraper</span><span class="p">:</span>
+<span class="normal">199</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">SigaaScraper</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">"""Cliente de scraping para o portal discente do SIGAA UFG.</span>
 
 <span class="sd">    Args:</span>
@@ -1960,7 +1960,7 @@ print(discente.nome)
         <span class="n">rows</span> <span class="o">=</span> <span class="n">sel</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">'//div[@id="avaliacao-portal"]//tbody/tr'</span><span class="p">)</span>
         <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">:</span>
-            <span class="n">tipo</span> <span class="o">=</span> <span class="s2">"alerta"</span> <span class="k">if</span> <span class="n">row</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="sa">f</span><span class="s1">'td[1]//img[contains(@src, "</span><span class="si">{</span><span class="n">_ALERTA_IMG</span><span class="si">}</span><span class="s1">")]'</span><span class="p">)</span> <span class="k">else</span> <span class="s2">"normal"</span>
+            <span class="n">tipo</span> <span class="o">=</span> <span class="s2">"avaliacao"</span> <span class="k">if</span> <span class="n">row</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="sa">f</span><span class="s1">'td[1]//img[contains(@src, "</span><span class="si">{</span><span class="n">_ALERTA_IMG</span><span class="si">}</span><span class="s1">")]'</span><span class="p">)</span> <span class="k">else</span> <span class="s2">"atividade"</span>
             <span class="n">due_raw</span> <span class="o">=</span> <span class="s2">" "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">'td[2]//text()'</span><span class="p">)</span><span class="o">.</span><span class="n">getall</span><span class="p">())</span>
             <span class="n">due</span> <span class="o">=</span> <span class="n">SigaaScraper</span><span class="o">.</span><span class="n">_parse_due</span><span class="p">(</span><span class="n">due_raw</span><span class="p">)</span> <span class="ow">or</span> <span class="n">SigaaScraper</span><span class="o">.</span><span class="n">_parse_date</span><span class="p">(</span><span class="n">due_raw</span><span class="p">)</span>
             <span class="n">strong_label</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">'td[3]/small//strong/text()'</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
@@ -2127,7 +2127,7 @@ acadêmico completo do discente.</p>
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code><a class="autorefs autorefs-internal" title="sigaa_scraper.SessionExpiredError (sigaa_scraper.scraper_discente.SessionExpiredError)" href="#sigaa_scraper.SessionExpiredError">SessionExpiredError</a></code>
+                  <code><a class="autorefs autorefs-internal" title="sigaa_scraper.SessionExpiredError (sigaa_scraper.exceptions.SessionExpiredError)" href="#sigaa_scraper.SessionExpiredError">SessionExpiredError</a></code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2137,7 +2137,7 @@ acadêmico completo do discente.</p>
           </tr>
           <tr class="doc-section-item">
             <td>
-                  <code><a class="autorefs autorefs-internal" title="sigaa_scraper.UnexpectedPageError (sigaa_scraper.scraper_discente.UnexpectedPageError)" href="#sigaa_scraper.UnexpectedPageError">UnexpectedPageError</a></code>
+                  <code><a class="autorefs autorefs-internal" title="sigaa_scraper.UnexpectedPageError (sigaa_scraper.exceptions.UnexpectedPageError)" href="#sigaa_scraper.UnexpectedPageError">UnexpectedPageError</a></code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2151,7 +2151,14 @@ acadêmico completo do discente.</p>
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>sigaa_scraper/scraper_discente.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">44</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
 <span class="normal">45</span>
 <span class="normal">46</span>
 <span class="normal">47</span>
@@ -2161,14 +2168,7 @@ acadêmico completo do discente.</p>
 <span class="normal">51</span>
 <span class="normal">52</span>
 <span class="normal">53</span>
-<span class="normal">54</span>
-<span class="normal">55</span>
-<span class="normal">56</span>
-<span class="normal">57</span>
-<span class="normal">58</span>
-<span class="normal">59</span>
-<span class="normal">60</span>
-<span class="normal">61</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_discente</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Discente</span><span class="p">:</span>
+<span class="normal">54</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_discente</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Discente</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">"""Busca e retorna o perfil acadêmico do discente.</span>
 
 <span class="sd">    Realiza uma requisição autenticada ao SIGAA e extrai o perfil</span>
@@ -2992,8 +2992,8 @@ acadêmico completo do discente.</p>
 <span class="k">class</span><span class="w"> </span><span class="nc">Atividade</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">"""Atividade avaliativa pendente."""</span>
 
-    <span class="n">tipo</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s2">"alerta"</span><span class="p">,</span> <span class="s2">"normal"</span><span class="p">]</span>
-<span class="w">    </span><span class="sd">"""``"alerta"`` se há prova na semana corrente, ``"normal"`` caso contrário."""</span>
+    <span class="n">tipo</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s2">"avaliacao"</span><span class="p">,</span> <span class="s2">"atividade"</span><span class="p">]</span>
+<span class="w">    </span><span class="sd">"""``"avaliacao"`` se há prova na semana corrente, ``"atividade"`` caso contrário."""</span>
     <span class="n">due</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span>
 <span class="w">    </span><span class="sd">"""Prazo em ISO 8601 com fuso BRT (ex.: ``"2026-08-31T23:59:00-03:00"``) ou ``None``."""</span>
     <span class="n">nome</span><span class="p">:</span> <span class="nb">str</span>
@@ -3029,7 +3029,7 @@ acadêmico completo do discente.</p>
 
     <div class="doc doc-contents ">
 
-        <p><code>"alerta"</code> se há prova na semana corrente, <code>"normal"</code> caso contrário.</p>
+        <p><code>"avaliacao"</code> se há prova na semana corrente, <code>"atividade"</code> caso contrário.</p>
 
     </div>
 
@@ -3279,9 +3279,9 @@ acadêmico completo do discente.</p>
 
 
               <details class="mkdocstrings-source">
-                <summary>Source code in <code>sigaa_scraper/scraper_discente.py</code></summary>
-                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">16</span>
-<span class="normal">17</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">SessionExpiredError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+                <summary>Source code in <code>sigaa_scraper/exceptions.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">SessionExpiredError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Lançada quando os cookies da sessão estão expirados ou são inválidos."""</span>
 </code></pre></div></td></tr></table></div>
               </details>
@@ -3317,9 +3317,9 @@ acadêmico completo do discente.</p>
 
 
               <details class="mkdocstrings-source">
-                <summary>Source code in <code>sigaa_scraper/scraper_discente.py</code></summary>
-                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">20</span>
-<span class="normal">21</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">UnexpectedPageError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+                <summary>Source code in <code>sigaa_scraper/exceptions.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">UnexpectedPageError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Lançada quando o SIGAA retorna uma página fora do formato esperado."""</span>
 </code></pre></div></td></tr></table></div>
               </details>
