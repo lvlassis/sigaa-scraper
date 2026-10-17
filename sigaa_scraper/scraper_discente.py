@@ -3,6 +3,7 @@ from datetime import date, datetime, timedelta, timezone
 
 from parsel import Selector
 
+from .exceptions import SessionExpiredError, UnexpectedPageError
 from .models import Atividade, AtualizacaoTurma, Discente, TopicoForum, Turma
 from .pages import fetch_pagina_discente
 
@@ -11,14 +12,6 @@ _ALERTA_IMG = "prova_semana.png"
 _SESSION_EXPIRED_MARKER = "alert('Sua sessão foi expirada. É necessário autenticar-se novamente!');"
 _PAGE_MARKERS = ["Componente Curricular", "Dados Institucionais", "Minhas atividades"]
 _SMALL_PAGE_THRESHOLD = 500
-
-
-class SessionExpiredError(Exception):
-    """Lançada quando os cookies da sessão estão expirados ou são inválidos."""
-
-
-class UnexpectedPageError(Exception):
-    """Lançada quando o SIGAA retorna uma página fora do formato esperado."""
 
 
 class SigaaScraper:

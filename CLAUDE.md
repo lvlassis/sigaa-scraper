@@ -42,7 +42,8 @@ The library scrapes the authenticated student portal of SIGAA UFG (`sigaa.sistem
 - **`sigaa_scraper/pages.py`** — thin HTTP layer. `fetch_pagina_discente(cookies)` does the single GET request and returns raw HTML.
 - **`sigaa_scraper/scraper_discente.py`** — all parsing logic lives here as static methods on `SigaaScraper`. `get_discente()` calls `fetch_pagina_discente`, validates the response, then runs `_parse_discente` which delegates to per-section helpers (`_turmas`, `_atividades`, `_atualizacoes_turma`, `_topicos_forum`). Parsing uses `parsel.Selector` (XPath). Each page gets its own `scraper_<page>.py` file.
 - **`sigaa_scraper/models.py`** — plain `@dataclass` types: `Discente`, `Turma`, `Atividade`, `AtualizacaoTurma`, `TopicoForum`. `Discente` is the root object returned by `get_discente()`.
-- **`sigaa_scraper/__init__.py`** — public API surface (`SigaaScraper`, `SessionExpiredError`, `UnexpectedPageError`, and the four model types).
+- **`sigaa_scraper/exceptions.py`** — all exception classes (`SessionExpiredError`, `UnexpectedPageError`, `NetworkError`). Both `pages.py` and `scraper_discente.py` import from here to avoid circular imports.
+- **`sigaa_scraper/__init__.py`** — public API surface (`SigaaScraper`, `SessionExpiredError`, `UnexpectedPageError`, `NetworkError`, and the four model types).
 
 ### Testing strategy
 
@@ -55,6 +56,10 @@ To add a new real-page test case:
 1. `make pages` (needs `SIGAA_COOKIES`) → saves an anonymized HTML to `tests/pages/`.
 2. `make oracle` → generates the matching YAML.
 3. Run `pytest` — the new pair is picked up automatically.
+
+### Design decisions
+
+- **Library is the source of truth; CLI mirrors the interface.** All business logic, error handling, and data modeling belong in the library. The CLI (`__main__.py`) is a thin shell that translates library exceptions to JSON error messages and exit codes — it adds no logic of its own. New scraping behavior, new error conditions, new data fields: always implement in the library first, never in the CLI.
 
 ### Key implementation details
 

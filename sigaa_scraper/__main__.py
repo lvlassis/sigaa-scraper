@@ -4,7 +4,7 @@ import inspect
 import dataclasses
 
 import sigaa_scraper as _pkg
-from sigaa_scraper import SessionExpiredError, UnexpectedPageError
+from sigaa_scraper import NetworkError, SessionExpiredError, UnexpectedPageError
 
 
 def _discover_commands():
@@ -28,7 +28,18 @@ def _serialize(result):
 
 
 def main():
+    if sys.stdin.isatty():
+        print(
+            json.dumps({"error": "cookies_required", "hint": "Forneca o cookie via stdin: echo 'SEU_COOKIE' | sigaa-scraper"}),
+            file=sys.stderr,
+        )
+        sys.exit(3)
+
     cookies = sys.stdin.read().strip()
+    if not cookies:
+        print(json.dumps({"error": "cookies_required"}), file=sys.stderr)
+        sys.exit(3)
+
     commands = _discover_commands()
 
     if len(sys.argv) < 2:
@@ -60,6 +71,9 @@ def main():
     except UnexpectedPageError:
         print(json.dumps({"error": "unexpected_page"}), file=sys.stderr)
         sys.exit(2)
+    except NetworkError as e:
+        print(json.dumps({"error": "network_error", "detail": str(e)}), file=sys.stderr)
+        sys.exit(4)
 
 
 if __name__ == "__main__":
