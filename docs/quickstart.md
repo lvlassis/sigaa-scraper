@@ -62,7 +62,7 @@ except UnexpectedPageError:
     ],
     "atividades": [
         {
-            "tipo": "alerta",        # "alerta" = prova na semana, "normal" = demais
+            "tipo": "avaliacao",      # "avaliacao" = prova na semana, "atividade" = demais
             "due": "2026-08-31T23:59:00-03:00",
             "nome": "Prova 1",
             "materia": "Cálculo I",

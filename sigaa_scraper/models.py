@@ -24,8 +24,8 @@ class TopicoForum:
 class Atividade:
     """Atividade avaliativa pendente."""
 
-    tipo: Literal["alerta", "normal"]
-    """``"alerta"`` se há prova na semana corrente, ``"normal"`` caso contrário."""
+    tipo: Literal["avaliacao", "atividade"]
+    """``"avaliacao"`` se há prova na semana corrente, ``"atividade"`` caso contrário."""
     due: str | None
     """Prazo em ISO 8601 com fuso BRT (ex.: ``"2026-08-31T23:59:00-03:00"``) ou ``None``."""
     nome: str

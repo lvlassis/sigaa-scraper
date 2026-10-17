@@ -33,11 +33,11 @@ turmas:
 atividades:
   count: 2
   items:
-  - tipo: alerta
+  - tipo: avaliacao
     due: '2026-09-28'
     nome: 1ª Avaliação
     materia: PESQUISA OPERACIONAL 1
-  - tipo: normal
+  - tipo: atividade
     due: '2026-09-22T23:59:00-03:00'
     nome: Recurso das correções da gincana de requisitos
     materia: ENGENHARIA DE SOFTWARE 1

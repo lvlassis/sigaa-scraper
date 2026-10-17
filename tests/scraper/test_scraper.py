@@ -211,11 +211,11 @@ class TestAtividades:
     </div>
     """
 
-    def test_tipo_alerta_com_img(self):
-        assert SigaaScraper._atividades(_sel(self._HTML_ALERTA))[0].tipo == "alerta"
+    def test_tipo_avaliacao_com_img(self):
+        assert SigaaScraper._atividades(_sel(self._HTML_ALERTA))[0].tipo == "avaliacao"
 
-    def test_tipo_normal_sem_img(self):
-        assert SigaaScraper._atividades(_sel(self._HTML_NORMAL))[0].tipo == "normal"
+    def test_tipo_atividade_sem_img(self):
+        assert SigaaScraper._atividades(_sel(self._HTML_NORMAL))[0].tipo == "atividade"
 
     def test_due_com_sufixo_dias(self):
         assert SigaaScraper._atividades(_sel(self._HTML_ALERTA))[0].due == "2026-08-31T23:59:00-03:00"

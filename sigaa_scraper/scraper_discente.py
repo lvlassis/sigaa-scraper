@@ -136,7 +136,7 @@ class SigaaScraper:
         rows = sel.xpath('//div[@id="avaliacao-portal"]//tbody/tr')
         result = []
         for row in rows:
-            tipo = "alerta" if row.xpath(f'td[1]//img[contains(@src, "{_ALERTA_IMG}")]') else "normal"
+            tipo = "avaliacao" if row.xpath(f'td[1]//img[contains(@src, "{_ALERTA_IMG}")]') else "atividade"
             due_raw = " ".join(row.xpath('td[2]//text()').getall())
             due = SigaaScraper._parse_due(due_raw) or SigaaScraper._parse_date(due_raw)
             strong_label = row.xpath('td[3]/small//strong/text()').get("").strip()

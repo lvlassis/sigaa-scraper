@@ -38,10 +38,10 @@ def main() -> None:
         print(f"  • {t.nome:50s}  {t.local:6s}  {t.horario}")
 
     print()
-    alertas = [a for a in discente.atividades if a.tipo == "alerta"]
-    print(f"Atividades ({len(discente.atividades)})  —  alertas de prova na semana: {len(alertas)}")
+    avaliacoes = [a for a in discente.atividades if a.tipo == "avaliacao"]
+    print(f"Atividades ({len(discente.atividades)})  —  avaliações na semana: {len(avaliacoes)}")
     for a in discente.atividades:
-        tag = "[ALERTA]" if a.tipo == "alerta" else "        "
+        tag = "[AVALIAÇÃO]" if a.tipo == "avaliacao" else "           "
         due = a.due or "sem prazo"
         print(f"  {tag} {due}  {a.nome} ({a.materia})")
 

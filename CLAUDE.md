@@ -63,7 +63,7 @@ To add a new real-page test case:
 
 ### Key implementation details
 
-- `Atividade.tipo` is `"alerta"` when the row contains `prova_semana.png` (exam this week), `"normal"` otherwise. This is the distinction being fixed on the current branch (`fix/atividades-x-provas`).
+- `Atividade.tipo` is `"avaliacao"` when the row contains `prova_semana.png` (exam this week), `"atividade"` otherwise.
 - All dates/datetimes are returned as ISO 8601 strings (not `datetime` objects). Timestamps include BRT offset (`-03:00`); date-only fields are `YYYY-MM-DD`.
 - The email normalization in `_parse_discente` replaces whatever domain SIGAA returns with `@discente.ufg.br`.
 - Session expiry detection: if the response is shorter than 500 chars AND contains the JS alert string, `SessionExpiredError` is raised. Any page missing all three `_PAGE_MARKERS` raises `UnexpectedPageError`.
